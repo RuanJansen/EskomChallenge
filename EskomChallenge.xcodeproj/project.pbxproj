@@ -21,6 +21,7 @@
 		F328B66628F55DFF00835F36 /* SitesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66528F55DFF00835F36 /* SitesModel.swift */; };
 		F328B66928F55F7300835F36 /* SitesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66828F55F7300835F36 /* SitesApi.swift */; };
 		F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66A28F55F7F00835F36 /* EskomApi.swift */; };
+		F328B66D28F5613100835F36 /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66C28F5613100835F36 /* MapComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		F328B66528F55DFF00835F36 /* SitesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitesModel.swift; sourceTree = "<group>"; };
 		F328B66828F55F7300835F36 /* SitesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitesApi.swift; sourceTree = "<group>"; };
 		F328B66A28F55F7F00835F36 /* EskomApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomApi.swift; sourceTree = "<group>"; };
+		F328B66C28F5613100835F36 /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		F328B65828F55D5A00835F36 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F328B66C28F5613100835F36 /* MapComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				F328B66928F55F7300835F36 /* SitesApi.swift in Sources */,
 				F328B66228F55DE200835F36 /* SiteView.swift in Sources */,
 				F328B65E28F55DC500835F36 /* MapView.swift in Sources */,
+				F328B66D28F5613100835F36 /* MapComponent.swift in Sources */,
 				F328B62F28F55C2400835F36 /* EskomChallengeApp.swift in Sources */,
 				F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */,
 				F328B66628F55DFF00835F36 /* SitesModel.swift in Sources */,
