@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F328B62F28F55C2400835F36 /* EskomChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */; };
+		F328B63128F55C2400835F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B63028F55C2400835F36 /* ContentView.swift */; };
+		F328B63328F55C2600835F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F328B63228F55C2600835F36 /* Assets.xcassets */; };
+		F328B63628F55C2600835F36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F328B63528F55C2600835F36 /* Preview Assets.xcassets */; };
+		F328B64028F55C2600835F36 /* EskomChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B63F28F55C2600835F36 /* EskomChallengeTests.swift */; };
+		F328B64A28F55C2600835F36 /* EskomChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B64928F55C2600835F36 /* EskomChallengeUITests.swift */; };
+		F328B64C28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B64B28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F328B63C28F55C2600835F36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F328B62328F55C2400835F36 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F328B62A28F55C2400835F36;
+			remoteInfo = EskomChallenge;
+		};
+		F328B64628F55C2600835F36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F328B62328F55C2400835F36 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F328B62A28F55C2400835F36;
+			remoteInfo = EskomChallenge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F328B62B28F55C2400835F36 /* EskomChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EskomChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeApp.swift; sourceTree = "<group>"; };
+		F328B63028F55C2400835F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F328B63228F55C2600835F36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F328B63528F55C2600835F36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F328B63B28F55C2600835F36 /* EskomChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EskomChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F328B63F28F55C2600835F36 /* EskomChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeTests.swift; sourceTree = "<group>"; };
+		F328B64528F55C2600835F36 /* EskomChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EskomChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F328B64928F55C2600835F36 /* EskomChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeUITests.swift; sourceTree = "<group>"; };
+		F328B64B28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F328B62828F55C2400835F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F328B63828F55C2600835F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F328B64228F55C2600835F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F328B62228F55C2400835F36 = {
+			isa = PBXGroup;
+			children = (
+				F328B62D28F55C2400835F36 /* EskomChallenge */,
+				F328B63E28F55C2600835F36 /* EskomChallengeTests */,
+				F328B64828F55C2600835F36 /* EskomChallengeUITests */,
+				F328B62C28F55C2400835F36 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F328B62C28F55C2400835F36 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F328B62B28F55C2400835F36 /* EskomChallenge.app */,
+				F328B63B28F55C2600835F36 /* EskomChallengeTests.xctest */,
+				F328B64528F55C2600835F36 /* EskomChallengeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F328B62D28F55C2400835F36 /* EskomChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */,
+				F328B63028F55C2400835F36 /* ContentView.swift */,
+				F328B63228F55C2600835F36 /* Assets.xcassets */,
+				F328B63428F55C2600835F36 /* Preview Content */,
+			);
+			path = EskomChallenge;
+			sourceTree = "<group>";
+		};
+		F328B63428F55C2600835F36 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F328B63528F55C2600835F36 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F328B63E28F55C2600835F36 /* EskomChallengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				F328B63F28F55C2600835F36 /* EskomChallengeTests.swift */,
+			);
+			path = EskomChallengeTests;
+			sourceTree = "<group>";
+		};
+		F328B64828F55C2600835F36 /* EskomChallengeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F328B64928F55C2600835F36 /* EskomChallengeUITests.swift */,
+				F328B64B28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift */,
+			);
+			path = EskomChallengeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F328B62A28F55C2400835F36 /* EskomChallenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F328B64F28F55C2600835F36 /* Build configuration list for PBXNativeTarget "EskomChallenge" */;
+			buildPhases = (
+				F328B62728F55C2400835F36 /* Sources */,
+				F328B62828F55C2400835F36 /* Frameworks */,
+				F328B62928F55C2400835F36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EskomChallenge;
+			productName = EskomChallenge;
+			productReference = F328B62B28F55C2400835F36 /* EskomChallenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F328B63A28F55C2600835F36 /* EskomChallengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F328B65228F55C2600835F36 /* Build configuration list for PBXNativeTarget "EskomChallengeTests" */;
+			buildPhases = (
+				F328B63728F55C2600835F36 /* Sources */,
+				F328B63828F55C2600835F36 /* Frameworks */,
+				F328B63928F55C2600835F36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F328B63D28F55C2600835F36 /* PBXTargetDependency */,
+			);
+			name = EskomChallengeTests;
+			productName = EskomChallengeTests;
+			productReference = F328B63B28F55C2600835F36 /* EskomChallengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F328B64428F55C2600835F36 /* EskomChallengeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F328B65528F55C2600835F36 /* Build configuration list for PBXNativeTarget "EskomChallengeUITests" */;
+			buildPhases = (
+				F328B64128F55C2600835F36 /* Sources */,
+				F328B64228F55C2600835F36 /* Frameworks */,
+				F328B64328F55C2600835F36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F328B64728F55C2600835F36 /* PBXTargetDependency */,
+			);
+			name = EskomChallengeUITests;
+			productName = EskomChallengeUITests;
+			productReference = F328B64528F55C2600835F36 /* EskomChallengeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F328B62328F55C2400835F36 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					F328B62A28F55C2400835F36 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					F328B63A28F55C2600835F36 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = F328B62A28F55C2400835F36;
+					};
+					F328B64428F55C2600835F36 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = F328B62A28F55C2400835F36;
+					};
+				};
+			};
+			buildConfigurationList = F328B62628F55C2400835F36 /* Build configuration list for PBXProject "EskomChallenge" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F328B62228F55C2400835F36;
+			productRefGroup = F328B62C28F55C2400835F36 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F328B62A28F55C2400835F36 /* EskomChallenge */,
+				F328B63A28F55C2600835F36 /* EskomChallengeTests */,
+				F328B64428F55C2600835F36 /* EskomChallengeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F328B62928F55C2400835F36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F328B63628F55C2600835F36 /* Preview Assets.xcassets in Resources */,
+				F328B63328F55C2600835F36 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F328B63928F55C2600835F36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F328B64328F55C2600835F36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F328B62728F55C2400835F36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F328B63128F55C2400835F36 /* ContentView.swift in Sources */,
+				F328B62F28F55C2400835F36 /* EskomChallengeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F328B63728F55C2600835F36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F328B64028F55C2600835F36 /* EskomChallengeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F328B64128F55C2600835F36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F328B64C28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift in Sources */,
+				F328B64A28F55C2600835F36 /* EskomChallengeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F328B63D28F55C2600835F36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F328B62A28F55C2400835F36 /* EskomChallenge */;
+			targetProxy = F328B63C28F55C2600835F36 /* PBXContainerItemProxy */;
+		};
+		F328B64728F55C2600835F36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F328B62A28F55C2400835F36 /* EskomChallenge */;
+			targetProxy = F328B64628F55C2600835F36 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F328B64D28F55C2600835F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F328B64E28F55C2600835F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F328B65028F55C2600835F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EskomChallenge/Preview Content\"";
+				DEVELOPMENT_TEAM = MEKPW4F5YF;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruan.jansen.EskomChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F328B65128F55C2600835F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EskomChallenge/Preview Content\"";
+				DEVELOPMENT_TEAM = MEKPW4F5YF;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruan.jansen.EskomChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F328B65328F55C2600835F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MEKPW4F5YF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruan.jansen.EskomChallengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EskomChallenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EskomChallenge";
+			};
+			name = Debug;
+		};
+		F328B65428F55C2600835F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MEKPW4F5YF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruan.jansen.EskomChallengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EskomChallenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EskomChallenge";
+			};
+			name = Release;
+		};
+		F328B65628F55C2600835F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MEKPW4F5YF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruan.jansen.EskomChallengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EskomChallenge;
+			};
+			name = Debug;
+		};
+		F328B65728F55C2600835F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MEKPW4F5YF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruan.jansen.EskomChallengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EskomChallenge;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F328B62628F55C2400835F36 /* Build configuration list for PBXProject "EskomChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F328B64D28F55C2600835F36 /* Debug */,
+				F328B64E28F55C2600835F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F328B64F28F55C2600835F36 /* Build configuration list for PBXNativeTarget "EskomChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F328B65028F55C2600835F36 /* Debug */,
+				F328B65128F55C2600835F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F328B65228F55C2600835F36 /* Build configuration list for PBXNativeTarget "EskomChallengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F328B65328F55C2600835F36 /* Debug */,
+				F328B65428F55C2600835F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F328B65528F55C2600835F36 /* Build configuration list for PBXNativeTarget "EskomChallengeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F328B65628F55C2600835F36 /* Debug */,
+				F328B65728F55C2600835F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F328B62328F55C2400835F36 /* Project object */;
+}
