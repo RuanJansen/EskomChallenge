@@ -14,6 +14,13 @@
 		F328B64028F55C2600835F36 /* EskomChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B63F28F55C2600835F36 /* EskomChallengeTests.swift */; };
 		F328B64A28F55C2600835F36 /* EskomChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B64928F55C2600835F36 /* EskomChallengeUITests.swift */; };
 		F328B64C28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B64B28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift */; };
+		F328B65E28F55DC500835F36 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B65D28F55DC500835F36 /* MapView.swift */; };
+		F328B66028F55DD300835F36 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B65F28F55DD300835F36 /* DashboardView.swift */; };
+		F328B66228F55DE200835F36 /* SiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66128F55DE200835F36 /* SiteView.swift */; };
+		F328B66428F55DF300835F36 /* EskomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66328F55DF300835F36 /* EskomModel.swift */; };
+		F328B66628F55DFF00835F36 /* SitesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66528F55DFF00835F36 /* SitesModel.swift */; };
+		F328B66928F55F7300835F36 /* SitesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66828F55F7300835F36 /* SitesApi.swift */; };
+		F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66A28F55F7F00835F36 /* EskomApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		F328B64528F55C2600835F36 /* EskomChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EskomChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F328B64928F55C2600835F36 /* EskomChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeUITests.swift; sourceTree = "<group>"; };
 		F328B64B28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F328B65D28F55DC500835F36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F328B65F28F55DD300835F36 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		F328B66128F55DE200835F36 /* SiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteView.swift; sourceTree = "<group>"; };
+		F328B66328F55DF300835F36 /* EskomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomModel.swift; sourceTree = "<group>"; };
+		F328B66528F55DFF00835F36 /* SitesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitesModel.swift; sourceTree = "<group>"; };
+		F328B66828F55F7300835F36 /* SitesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitesApi.swift; sourceTree = "<group>"; };
+		F328B66A28F55F7F00835F36 /* EskomApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +108,11 @@
 		F328B62D28F55C2400835F36 /* EskomChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				F328B66728F55F6200835F36 /* Networking */,
+				F328B65B28F55D8200835F36 /* Models */,
+				F328B65A28F55D7400835F36 /* ViewModels */,
+				F328B65928F55D6E00835F36 /* Screens */,
+				F328B65828F55D5A00835F36 /* Components */,
 				F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */,
 				F328B63028F55C2400835F36 /* ContentView.swift */,
 				F328B63228F55C2600835F36 /* Assets.xcassets */,
@@ -125,6 +144,48 @@
 				F328B64B28F55C2600835F36 /* EskomChallengeUITestsLaunchTests.swift */,
 			);
 			path = EskomChallengeUITests;
+			sourceTree = "<group>";
+		};
+		F328B65828F55D5A00835F36 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F328B65928F55D6E00835F36 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F328B65D28F55DC500835F36 /* MapView.swift */,
+				F328B65F28F55DD300835F36 /* DashboardView.swift */,
+				F328B66128F55DE200835F36 /* SiteView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F328B65A28F55D7400835F36 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F328B65B28F55D8200835F36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F328B66328F55DF300835F36 /* EskomModel.swift */,
+				F328B66528F55DFF00835F36 /* SitesModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F328B66728F55F6200835F36 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F328B66828F55F7300835F36 /* SitesApi.swift */,
+				F328B66A28F55F7F00835F36 /* EskomApi.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +319,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F328B63128F55C2400835F36 /* ContentView.swift in Sources */,
+				F328B66428F55DF300835F36 /* EskomModel.swift in Sources */,
+				F328B66028F55DD300835F36 /* DashboardView.swift in Sources */,
+				F328B66928F55F7300835F36 /* SitesApi.swift in Sources */,
+				F328B66228F55DE200835F36 /* SiteView.swift in Sources */,
+				F328B65E28F55DC500835F36 /* MapView.swift in Sources */,
 				F328B62F28F55C2400835F36 /* EskomChallengeApp.swift in Sources */,
+				F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */,
+				F328B66628F55DFF00835F36 /* SitesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
