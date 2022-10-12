@@ -22,6 +22,7 @@
 		F328B66928F55F7300835F36 /* SitesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66828F55F7300835F36 /* SitesApi.swift */; };
 		F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66A28F55F7F00835F36 /* EskomApi.swift */; };
 		F328B66D28F5613100835F36 /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66C28F5613100835F36 /* MapComponent.swift */; };
+		F380BF8428F6F6AD000C2312 /* TempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380BF8328F6F6AD000C2312 /* TempFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		F328B66828F55F7300835F36 /* SitesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitesApi.swift; sourceTree = "<group>"; };
 		F328B66A28F55F7F00835F36 /* EskomApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomApi.swift; sourceTree = "<group>"; };
 		F328B66C28F5613100835F36 /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
+		F380BF8328F6F6AD000C2312 /* TempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +112,9 @@
 		F328B62D28F55C2400835F36 /* EskomChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				F380BF8228F6F69D000C2312 /* ViewModels */,
 				F328B66728F55F6200835F36 /* Networking */,
 				F328B65B28F55D8200835F36 /* Models */,
-				F328B65A28F55D7400835F36 /* ViewModels */,
 				F328B65928F55D6E00835F36 /* Screens */,
 				F328B65828F55D5A00835F36 /* Components */,
 				F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */,
@@ -166,13 +168,6 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		F328B65A28F55D7400835F36 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		F328B65B28F55D8200835F36 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +184,14 @@
 				F328B66A28F55F7F00835F36 /* EskomApi.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		F380BF8228F6F69D000C2312 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F380BF8328F6F6AD000C2312 /* TempFile.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +326,7 @@
 			files = (
 				F328B63128F55C2400835F36 /* ContentView.swift in Sources */,
 				F328B66428F55DF300835F36 /* EskomModel.swift in Sources */,
+				F380BF8428F6F6AD000C2312 /* TempFile.swift in Sources */,
 				F328B66028F55DD300835F36 /* DashboardView.swift in Sources */,
 				F328B66928F55F7300835F36 /* SitesApi.swift in Sources */,
 				F328B66228F55DE200835F36 /* SiteView.swift in Sources */,
