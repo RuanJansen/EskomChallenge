@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    let eskomApi = EskomApi()
     var body: some View {
         TabView{
             DashboardView().tabItem{
@@ -17,6 +18,9 @@ struct ContentView: View {
                 Label("Sites", systemImage: "map")
             }
         }.accentColor(.red)
+            .onAppear(){
+                eskomApi.getAreas()
+            }
     }
 }
 
