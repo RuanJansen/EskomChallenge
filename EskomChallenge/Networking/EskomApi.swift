@@ -41,6 +41,7 @@ import Foundation
 
 
 class EskomApi{
+    var areaData: Areas?
     let token: String = "YVKYuUQ2ZjDFXGxztCeA"
     let lat: Float = -26.0269658
     let lon: Float = 28.0137339
@@ -60,8 +61,8 @@ class EskomApi{
             do{
                 let decodedData =  try JSONDecoder().decode(Areas.self, from: data)
                 DispatchQueue.main.async {
-//                    self.zones = decodedData
-                    print(decodedData)
+                    self.areaData = decodedData
+//                    print(self.areaData?.areas[0].id ?? "")
                 }
             }catch let error{
                 print(error)

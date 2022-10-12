@@ -20,7 +20,6 @@ struct ContentView: View {
         }.accentColor(.red)
             .onAppear(){
                 eskomApi.getAreas()
-                eskomApi.getEvents()
             }
     }
 }
