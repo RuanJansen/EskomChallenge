@@ -72,7 +72,7 @@ class EskomApi{
 
     func getEvents(){
         let urlEvents: String = "https://developer.sepush.co.za/business/2.0/area?id=\(id)&test=current"
-
+       
         guard let url = URL(string: urlEvents) else {
             fatalError("Invalid URL")
         }
@@ -82,7 +82,7 @@ class EskomApi{
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else{ return }
             do{
-                let decodedData =  try JSONDecoder().decode(Event.self, from: data)
+                let decodedData =  try JSONDecoder().decode(Events.self, from: data)
                 DispatchQueue.main.async {
 //                    self.zones = decodedData
                     print(decodedData)
