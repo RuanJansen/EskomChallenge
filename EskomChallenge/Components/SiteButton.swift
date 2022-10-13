@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SiteButton: View {
+    @EnvironmentObject var vm: MapViewModel
+    @Binding var site: Sites
     var body: some View {
         VStack {
             HStack {
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width: 40, height: 40)
-                Text("Site A")
+                Text(vm.currentSite.name)
                     .font(.title2).fontWeight(.semibold)
                 Spacer()
                 Image(systemName: "chevron.right")
@@ -36,6 +39,6 @@ struct SiteButton: View {
 
 struct SiteButton_Previews: PreviewProvider {
     static var previews: some View {
-        SiteButton()
+        SiteButton(site: .constant(Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)))
     }
 }

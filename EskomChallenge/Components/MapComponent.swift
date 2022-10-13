@@ -72,33 +72,33 @@
 //}
 //
 //
-////extension MapComponent{
-////    class DataHolder{
-////        @Published var data = [DummyData](arrayLiteral:
-////                                            DummyData(site: "One", coordinate:CLLocationCoordinate2D(latitude: -33.9249,longitude: 18.4241), id: "1"),
-////                                          DummyData(site: "Two", coordinate: CLLocationCoordinate2D(latitude: -33.9649,longitude: 18.4547), id: "2"))
-////    }
-////
-////    class DummyData: Identifiable, Hashable{
-////
-////
-////
-////        static func == (lhs: DummyData, rhs: DummyData) -> Bool {
-////            lhs.id == rhs.id
-////        }
-////    //    let id = UUID()
-////        let id: String
-////        let site: String
-////        let coordinate: CLLocationCoordinate2D
-////
-////        init(site: String, coordinate: CLLocationCoordinate2D, id: String) {
-////            self.site = site
-////            self.coordinate = coordinate
-////            self.id = id
-////        }
-////
-////        func hash(into hasher: inout Hasher){
-////            hasher.combine(id)
-////        }
-////    }
-////}
+//extension MapComponent{
+//    class DataHolder{
+//        @Published var data = [DummyData](arrayLiteral:
+//                                            DummyData(site: "One", coordinate:CLLocationCoordinate2D(latitude: -33.9249,longitude: 18.4241), id: "1"),
+//                                          DummyData(site: "Two", coordinate: CLLocationCoordinate2D(latitude: -33.9649,longitude: 18.4547), id: "2"))
+//    }
+//
+//    class DummyData: Identifiable, Hashable{
+//
+//
+//
+//        static func == (lhs: DummyData, rhs: DummyData) -> Bool {
+//            lhs.id == rhs.id
+//        }
+//    //    let id = UUID()
+//        let id: String
+//        let site: String
+//        let coordinate: CLLocationCoordinate2D
+//
+//        init(site: String, coordinate: CLLocationCoordinate2D, id: String) {
+//            self.site = site
+//            self.coordinate = coordinate
+//            self.id = id
+//        }
+//
+//        func hash(into hasher: inout Hasher){
+//            hasher.combine(id)
+//        }
+//    }
+//}

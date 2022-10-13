@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import MapKit
+struct Sites: Identifiable, Hashable{
+    static func == (lhs: Sites, rhs: Sites) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    let id: Int
+    let name: String
+    let coordinate: CLLocationCoordinate2D
+    let loadshedding: Bool
+}
