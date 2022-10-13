@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DashboardView: View {
+    @State var progressValue: Float = 0.0
     var body: some View {
         ScrollView{
             VStack{
@@ -15,7 +17,8 @@ struct DashboardView: View {
                     .padding()
              activeLocationRing()
             // locationChoice()
-                    .padding()
+               
+                
              loadsheddingSchedule()
                 .padding()
             mapComponent()
@@ -24,9 +27,13 @@ struct DashboardView: View {
     }
  
 }
+
+
+
 //MARK: Active Location Ring
 @ViewBuilder
 private func activeLocationRing() -> some View{
+    
     ZStack{
         
         Rectangle()
@@ -34,26 +41,58 @@ private func activeLocationRing() -> some View{
             .cornerRadius(25)
             
             
-        
+        //progress view
+//
+//        progressBar(progress:self.$progressValue)
+//                .frame(width:160, height: 160)
+//                .padding(20)
+//                .onAppear(){
+//                    DashboardView.progressValue = 0.3
         HStack{
-            Image(systemName: "power.circle.fill")
+           Text("progressView")
                 .foregroundColor(.white)
-                .padding()
             
             VStack(alignment: .leading){
-                Text("Offline Locations")
-                    .font(.title2)
-                    .foregroundColor(.white)
+                HStack{
+                    Image(systemName: "power.circle.fill")
+                        .foregroundColor(.pink)
+                        
+                    Text("Offline Locations")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                   
+                }
                 Text("current loadshedding Stage")
                     .font(.subheadline)
                     .foregroundColor(.white)
             }
             
-         
+        }
             
         }
         
        
+    }
+
+
+
+struct progressBar: View{
+    
+    
+    @Binding var progress: Float
+    var color: Color = Color.pink
+    var body: some View{
+        ZStack{
+            Circle()
+                .stroke(lineWidth: 20.0)
+                .opacity(0.20)
+                .foregroundColor(Color.gray)
+            Circle()
+                .trim(from: 0.0, to: CGFloat(min(progress,1.0)))
+                .stroke(style: StrokeStyle(lineWidth: 12.0, lineCap: .round, lineJoin: .round))
+                .foregroundColor(color)
+                .rotationEffect(Angle(degrees: 270))
+        }
     }
 }
 
@@ -131,15 +170,18 @@ private func loadsheddingSchedule()-> some View{
         }
     }
 }
-
+//MARK: MapComponent area
 @ViewBuilder
-private func  mapComponent()->some View{
+ func  mapComponent()->some View{
+
     VStack(alignment:.leading){
-        Text("View in Maps")
+        Text("All Locations")
+            .padding(.leading)
             .font(.title3)
             
             
         RoundedRectangle(cornerRadius: 15)
+       
             .padding()
             .frame(height: 200)
             .foregroundColor(.gray)
