@@ -6,20 +6,35 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
+    @State var siteViewActive: Bool = false
+    @State var sites: Sites
+    @EnvironmentObject var vm: MapViewModel
+    
     var body: some View {
-        ScrollView {
+        
             VStack(alignment: .leading) {
-                TopView()
-                MapView()
-                SiteSelector()
-                ForEach(0 ..< 3) { item in
-                    SiteButton()
+                TopView().padding()
+                MapView().ignoresSafeArea()
+                    .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
+                    .cornerRadius(30)
+                    .padding()
+                ScrollView {
+                    SiteSelector().padding()
+                    ForEach(vm.sites) { site in
+                    Button{
+                        vm.updateRegion(site: site)
+                    }label:{
+                        SiteButton(site: site)
+                    }
                 }
             }
             .padding()
-        }
+            }.sheet(isPresented: $siteViewActive){
+                SiteView().presentationDetents([.medium, .large])
+            }
     }
     @ViewBuilder
     func SiteSelector()-> some View{
@@ -32,9 +47,25 @@ struct MapView: View {
     @ViewBuilder
     func TopView()-> some View{
         HStack {
-            Text("Provinces")
-                .font(.title2)
-                .bold()
+            Menu {
+                ForEach(vm.provinces, id: \.self){ province in
+                    Button{
+                        //Filter
+                    } label: {
+                        Text(province)
+                    }
+                }
+            } label: {
+//                Label("Provinces", systemImage: "line.3.horizontal.decrease.circle")
+                Text("Provinces")
+                    .font(.title2)
+                    .bold()
+//
+//                Image(systemName: "line.3.horizontal.decrease.circle")
+            }
+            
+            
+            
             Spacer()
             Button {} label: {
                 Text("City")
@@ -46,21 +77,74 @@ struct MapView: View {
             
         }
     }
+    //SiteButton
+    @ViewBuilder
+    func SiteButton(site: Sites)-> some View{
+        VStack {
+            HStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .frame(width: 40, height: 40)
+                Text(site.name)
+                    .font(.title2).fontWeight(.semibold)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.title2)
+            }
+            Rectangle()
+                .frame(height: 0.5)
+            HStack{
+                Image(systemName: "lightbulb.slash.fill")
+                Text("18:00 - 20:00")
+                Spacer()
+            }
+        }
+        .padding()
+        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 15,style: .continuous))
+        .padding(.horizontal,10)
+    }
     
     //Map View
     @ViewBuilder
     func MapView()-> some View{
-        RoundedRectangle(cornerRadius: 15)
-            .padding()
-            .frame(height: 400)
-            .foregroundColor(.gray)
-        
+        ZStack{
+            Map(
+                coordinateRegion: $vm.mapRegion,
+                annotationItems: vm.sites,
+                annotationContent: { item in
+                    MapAnnotation(coordinate: item.coordinate){
+                        Button(action: {
+                            vm.currentSite = item
+                            siteViewActive = true
+                        }) {
+                            VStack{
+                                Image(systemName: "map.circle")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .padding(6)
+                                    .background(.red)
+                                    .cornerRadius(36)
+                                Image(systemName: "triangle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(.red)
+                                    .rotationEffect(Angle(degrees: 180))
+                                    .offset(y: -10)
+                                    .padding(.bottom, 30)
+                            }
+                        }
+                    }
+                })
+        }
     }
 }
 
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
     }
 }
