@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import MapKit
 struct ContentView: View {
     let eskomApi = EskomApi()
     var body: some View {
@@ -14,12 +14,16 @@ struct ContentView: View {
             DashboardView().tabItem{
                 Label("Dashboard", systemImage: "chart.pie")
             }
-            MapView().tabItem{
+            MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)).tabItem{
                 Label("Sites", systemImage: "map")
-            }
+            }.environmentObject(MapViewModel())
         }.accentColor(.red)
-            .onAppear(){
-                eskomApi.getAreas()
+            .task{
+                do {
+                    try await eskomApi.getAreas(lat: -28.559482, lon: 24.937505999999985)
+                } catch {
+                    print("Error", error)
+                }
             }
     }
 }
