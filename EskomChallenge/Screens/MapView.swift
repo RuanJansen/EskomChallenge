@@ -12,18 +12,17 @@ struct MapView: View {
     @State var siteViewActive: Bool = false
     @State var sites: Sites
     @EnvironmentObject var vm: MapViewModel
-    
+    @StateObject var eskomApi = EskomApi()
     var body: some View {
-        
-            VStack(alignment: .leading) {
-                TopView().padding()
-                MapView().ignoresSafeArea()
-                    .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
-                    .cornerRadius(30)
-                    .padding()
-                ScrollView {
-                    SiteSelector().padding()
-                    ForEach(vm.sites) { site in
+        VStack(alignment: .leading) {
+            TopView().padding()
+            MapView().ignoresSafeArea()
+                .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
+                .cornerRadius(30)
+                .padding()
+            ScrollView {
+                SiteSelector().padding()
+                ForEach(vm.sites) { site in
                     Button{
                         vm.updateRegion(site: site)
                     }label:{
@@ -32,9 +31,9 @@ struct MapView: View {
                 }
             }
             .padding()
-            }.sheet(isPresented: $siteViewActive){
-                SiteView().presentationDetents([.medium, .large])
-            }
+        }.sheet(isPresented: $siteViewActive){
+            SiteView().presentationDetents([.medium, .large])
+        }
     }
     @ViewBuilder
     func SiteSelector()-> some View{
@@ -56,16 +55,13 @@ struct MapView: View {
                     }
                 }
             } label: {
-//                Label("Provinces", systemImage: "line.3.horizontal.decrease.circle")
+                //                Label("Provinces", systemImage: "line.3.horizontal.decrease.circle")
                 Text("Provinces")
                     .font(.title2)
                     .bold()
-//
-//                Image(systemName: "line.3.horizontal.decrease.circle")
+                //
+                //                Image(systemName: "line.3.horizontal.decrease.circle")
             }
-            
-            
-            
             Spacer()
             Button {} label: {
                 Text("City")
@@ -74,9 +70,9 @@ struct MapView: View {
                     .padding(.horizontal,15)
                     .background(.black, in: RoundedRectangle(cornerRadius: 15))
             }
-            
         }
     }
+    
     //SiteButton
     @ViewBuilder
     func SiteButton(site: Sites)-> some View{
@@ -92,10 +88,18 @@ struct MapView: View {
             }
             Rectangle()
                 .frame(height: 0.5)
-            HStack{
-                Image(systemName: "lightbulb.slash.fill")
-                Text("18:00 - 20:00")
-                Spacer()
+            ForEach(eskomApi.eventData?.schedule.days ?? [Day(date: "1", name: "1", stages: [["1"], ["1"]])], id:\.self) { day in
+                HStack{
+                    Image(true ? "lightbulb.fill"  : "lightbulb.slash.fill")
+                    ForEach(day.stages, id:\.self) { stage in
+                        ForEach(stage.count, id:\.self) { i in
+                            Text(stage[i])
+                        }
+                    }
+                    Spacer()
+//                    Text("\(day.)")
+                    
+                }
             }
         }
         .padding()
@@ -135,6 +139,13 @@ struct MapView: View {
                                     .offset(y: -10)
                                     .padding(.bottom, 30)
                             }
+                        }
+                        .task{
+                            do {
+                                try await eskomApi.getAreas(lat: Float(item.coordinate.latitude), lon: Float(item.coordinate.longitude))
+                            } catch {
+                                print("Error", error)
+                            } 
                         }
                     }
                 })

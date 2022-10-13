@@ -6,18 +6,18 @@
 //
 
 import Foundation
-
-class EskomApi{
+import MapKit
+class EskomApi: ObservableObject{
+    var vm = MapViewModel()
     var areaData: Areas?
     var eventData: Events?
     let token: String = "YVKYuUQ2ZjDFXGxztCeA"
 //    let lat: Float = -26.0269658
 //    let lon: Float = 28.0137339
     
-    let lat: Float = -33.918861
-    let lon: Float = 18.423300
+    
 
-    func getAreas(){
+    func getAreas(lat: Float, lon: Float) async throws{
         var id: String = ""
         let urlAreas: String = "https://developer.sepush.co.za/business/2.0/areas_nearby?lat=\(lat)&lon=\(lon)"
 
@@ -27,22 +27,27 @@ class EskomApi{
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(token, forHTTPHeaderField: "token")
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else{ return }
-            do{
-                let decodedData =  try JSONDecoder().decode(Areas.self, from: data)
-                DispatchQueue.main.async { [self] in
-                    print("Call Areas")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+                let decodedData = try JSONDecoder().decode(Areas.self, from: data)
+        
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data else{ return }
+//            do{
+//                let decodedData =  try JSONDecoder().decode(Areas.self, from: data)
+//                DispatchQueue.main.async { [self] in
+////                    print("Call Areas")
                     self.areaData = decodedData
                     id = self.areaData?.areas[0].id ?? ""
                     print(id)
                     getEvents(id: id)
-                }
-            }catch let error{
-                print(error)
-            }
-        }
-            .resume()
+//                }
+//            }catch let error{
+//                print(error)
+//            }
+//        }
+//            .resume()
     }
 
     func getEvents(id: String){
@@ -71,4 +76,13 @@ class EskomApi{
         }
         .resume()
     }
+    
+    func isLoadshedding(event: Event) -> Bool{
+        return true
+    }
+    
+    
+    
+    
+    
 }
