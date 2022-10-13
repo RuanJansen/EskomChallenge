@@ -16,7 +16,6 @@ class EskomApi{
     
     let lat: Float = -33.918861
     let lon: Float = 18.423300
-    
 
     func getAreas(){
         var id: String = ""
