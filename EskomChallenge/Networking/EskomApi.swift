@@ -62,7 +62,7 @@ class EskomApi{
                 let decodedData =  try JSONDecoder().decode(Areas.self, from: data)
                 DispatchQueue.main.async {
                     self.areaData = decodedData
-//                    print(self.areaData?.areas[0].id ?? "")
+                    print(self.areaData?.areas[0].id ?? "")
                 }
             }catch let error{
                 print(error)

@@ -69,6 +69,7 @@ struct SiteDetailView: View {
     func ScheduleRow()-> some View{
         HStack(alignment: .top){
             Text("MON")
+                .bold()
             Spacer()
             VStack {
                 ForEach(0 ..< 3) { item in
