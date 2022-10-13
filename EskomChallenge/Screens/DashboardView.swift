@@ -14,7 +14,7 @@ struct DashboardView: View {
              activeLocationRing()
              locationChoice()
              loadsheddingSchedule()
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            mapComponent()
             }
         }
     }
@@ -25,8 +25,10 @@ struct DashboardView: View {
 private func activeLocationRing() -> some View{
     ZStack{
         Rectangle()
-            .frame(width: 300, height: 250)
+            .frame(width: 100, height: 150)
             .cornerRadius(25)
+            .background(.gray)
+            
             
         
         HStack{
@@ -36,7 +38,7 @@ private func activeLocationRing() -> some View{
                     .font(.title2)
                 Text("current loadshedding Stage")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.black)
             }
             
         }
@@ -54,22 +56,21 @@ private func locationChoice()-> some View{
         
             Spacer()
         
-        Button{}label:{
-            Text("Region")
-//            Menu("Region"){
-//
-//                Button("Western Cape", action: westernCape)
-//                Button("Gauteng", action: westernCape)
-//                Button("Eastern Cape", action: westernCape)
-//                Button("North West", action: westernCape)
-//                Button("Free State", action: westernCape)
-//                Button("KwaZulu-Natal", action: westernCape)
-//                Button("Mpumalanga ", action: westernCape)
-//                Button("Limpopo ", action: westernCape)
-//
-//            }
+        Menu("Region"){
             
+            Button("Gauteng"){}
+            Button("North West"){}
+            Button("Western Cape"){}
+            Button("Eastern Cape"){}
+            Button("Nothern Cape"){}
+            Button("Free State"){}
+            Button("Limpopo"){}
+            Button("KwaZulu Natal"){}
+       
         }
+            
+            
+      
     }
     
  
@@ -78,14 +79,14 @@ private func locationChoice()-> some View{
 //MARK: loadshedding schedule
 @ViewBuilder
 private func loadsheddingSchedule()-> some View{
-    ScrollView(.horizontal){
+    ScrollView(.horizontal, showsIndicators: false){
         HStack(spacing: 20){
-            ForEach(0..<9){
+            ForEach(1..<9){
                
                     Text("Stage \($0)")
                         .foregroundColor(.black)
                         .font(.title2)
-                        .frame(width: 200, height: 200)
+                        .frame(width: 100, height: 100)
                         .background(.gray)
                     
             }
