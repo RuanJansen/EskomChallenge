@@ -11,9 +11,13 @@ struct DashboardView: View {
     var body: some View {
         ScrollView{
             VStack{
+                locationChoice()
+                    .padding()
              activeLocationRing()
-             locationChoice()
+            // locationChoice()
+                    .padding()
              loadsheddingSchedule()
+                .padding()
             mapComponent()
             }
         }
@@ -24,24 +28,32 @@ struct DashboardView: View {
 @ViewBuilder
 private func activeLocationRing() -> some View{
     ZStack{
+        
         Rectangle()
-            .frame(width: 100, height: 150)
+            .frame(width: 370, height: 150)
             .cornerRadius(25)
-            .background(.gray)
             
             
         
         HStack{
             Image(systemName: "power.circle.fill")
-            VStack{
+                .foregroundColor(.white)
+                .padding()
+            
+            VStack(alignment: .leading){
                 Text("Offline Locations")
                     .font(.title2)
+                    .foregroundColor(.white)
                 Text("current loadshedding Stage")
                     .font(.subheadline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
             }
             
+         
+            
         }
+        
+       
     }
 }
 
@@ -79,28 +91,59 @@ private func locationChoice()-> some View{
 //MARK: loadshedding schedule
 @ViewBuilder
 private func loadsheddingSchedule()-> some View{
-    ScrollView(.horizontal, showsIndicators: false){
-        HStack(spacing: 20){
-            ForEach(1..<9){
+    VStack(alignment: .leading){
+        HStack{
+        Text("LoadShedding Schedule")
+            .font(.title3)
+            .multilineTextAlignment(.leading)
+           Spacer()
+        Menu("Day"){
+            
+            Button("Monday"){}
+            Button("Tuesday"){}
+            Button("Wednesday"){}
+            Button("Thursday"){}
+            Button("Friday"){}
+            Button("Saturday"){}
+            Button("Sunday"){}
+            
+       
+        }
+    }
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(spacing: 20){
                
-                    Text("Stage \($0)")
-                        .foregroundColor(.black)
-                        .font(.title2)
-                        .frame(width: 100, height: 100)
-                        .background(.gray)
+                    ForEach(1..<9){
                     
+                        Text("Stage \($0)")
+                            .foregroundColor(.black)
+                            .font(.title2)
+                            .frame(width: 180, height: 180)
+                            .cornerRadius(25)
+                            .background(.gray)
+                        
+                        
+            
+                }
+               
+                .cornerRadius(25)
             }
-
         }
     }
 }
 
 @ViewBuilder
 private func  mapComponent()->some View{
-    RoundedRectangle(cornerRadius: 15)
-        .padding()
-        .frame(height: 200)
-        .foregroundColor(.gray)
+    VStack(alignment:.leading){
+        Text("View in Maps")
+            .font(.title3)
+            
+            
+        RoundedRectangle(cornerRadius: 15)
+            .padding()
+            .frame(height: 200)
+            .foregroundColor(.gray)
+    }
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
