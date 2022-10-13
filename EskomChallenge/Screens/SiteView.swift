@@ -1,13 +1,13 @@
 //
-//  SiteDetailView.swift
+//  SiteView.swift
 //  EskomChallenge
 //
-//  Created by Pat on 2022/10/13.
+//  Created by Ruan Jansen on 2022/10/11.
 //
 
 import SwiftUI
 
-struct SiteDetailView: View {
+struct SiteView: View {
     var body: some View {
         ScrollView {
             VStack {
@@ -79,20 +79,10 @@ struct SiteDetailView: View {
         }
         .padding()
     }
-    
-//    var button: some View{
-//        return Button {
-//
-//        } label: {
-//
-//        }
-//
-//    }
-    
 }
 
-struct SiteDetailView_Previews: PreviewProvider {
+struct SiteView_Previews: PreviewProvider {
     static var previews: some View {
-        SiteDetailView()
+        SiteView()
     }
 }
