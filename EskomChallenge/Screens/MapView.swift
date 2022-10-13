@@ -88,18 +88,18 @@ struct MapView: View {
             }
             Rectangle()
                 .frame(height: 0.5)
-            ForEach(eskomApi.eventData?.schedule.days ?? [Day(date: "1", name: "1", stages: [["1"], ["1"]])], id:\.self) { day in
+//            ForEach(eskomApi.eventData?.schedule.days ?? [Day(date: "1", name: "1", stages: [["1"], ["1"]])], id:\.self) { day in
                 HStack{
                     Image(true ? "lightbulb.fill"  : "lightbulb.slash.fill")
-                    ForEach(day.stages, id:\.self) { stage in
-                        ForEach(stage.count, id:\.self) { i in
-                            Text(stage[i])
-                        }
-                    }
-                    Spacer()
+//                    ForEach(day.stages, id:\.self) { stage in
+//                        ForEach(stage.count, id:\.self) { i in
+//                            Text(stage[i])
+//                        }
+//                    }
+//                    Spacer()
 //                    Text("\(day.)")
                     
-                }
+//                }
             }
         }
         .padding()
