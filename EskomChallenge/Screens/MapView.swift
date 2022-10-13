@@ -9,9 +9,55 @@ import SwiftUI
 
 struct MapView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment: .leading) {
+                TopView()
+                MapView()
+                SiteSelector()
+                ForEach(0 ..< 3) { item in
+                    SiteButton()
+                }
+            }
+            .padding()
+        }
+    }
+    @ViewBuilder
+    func SiteSelector()-> some View{
+        Text("Offine")
+            .font(.title2)
+            .frame(width: .infinity)
+            .bold()
+    }
+    
+    @ViewBuilder
+    func TopView()-> some View{
+        HStack {
+            Text("Provinces")
+                .font(.title2)
+                .bold()
+            Spacer()
+            Button {} label: {
+                Text("City")
+                    .fontWeight(.light)
+                    .foregroundColor(.white)
+                    .padding(.horizontal,15)
+                    .background(.black, in: RoundedRectangle(cornerRadius: 15))
+            }
+            
+        }
+    }
+    
+    //Map View
+    @ViewBuilder
+    func MapView()-> some View{
+        RoundedRectangle(cornerRadius: 15)
+            .padding()
+            .frame(height: 400)
+            .foregroundColor(.gray)
+        
     }
 }
+
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
