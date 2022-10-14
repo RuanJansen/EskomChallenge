@@ -9,6 +9,12 @@ import SwiftUI
 import MapKit
 
 struct DashboardView: View {
+    
+    @State var siteViewActive: Bool = false
+    @State var sites: Sites
+    @EnvironmentObject var vm: MapViewModel
+    @StateObject var eskomApi = EskomApi()
+    
     @State var progressValue: Float = 0.0
     var body: some View {
         ScrollView{
@@ -194,7 +200,17 @@ private func loadsheddingSchedule()-> some View{
             .font(.title3)
             
             
-        RoundedRectangle(cornerRadius: 15)
+        Map(
+            coordinateRegion: $vm.mapRegion,
+            annotationItems: vm.sites,
+            annotationContent: { item in
+                MapAnnotation(coordinate: item.coordinate){
+                    Button(action: {
+                        vm.currentSite = item
+                        siteViewActive = true
+                    })
+                }
+            })
        
             .padding()
             .frame(height: 200)
@@ -203,6 +219,7 @@ private func loadsheddingSchedule()-> some View{
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
     }
 }
+        
