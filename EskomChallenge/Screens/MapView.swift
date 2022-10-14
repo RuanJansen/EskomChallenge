@@ -95,21 +95,23 @@ struct MapView: View {
             }
             Rectangle()
                 .frame(height: 0.5)
-//            ForEach(eskomApi.eventData?.schedule.days ?? [Day(date: "1", name: "1", stages: [["1"], ["1"]])], id:\.self) { day in
+            ForEach(eskomApi.eventData?.schedule.days ?? [Day(date: "lol", name: "lol", stages: [["lol"], ["lol"]])], id:\.self) { day in
                 HStack{
+                    Text(!true ? "Loadshedding"  : "No loadshedding")
+                    Spacer()
                     
-//                    Text(!true ? "Loadshedding"  : "No loadshedding")
-//                    Spacer()
+                    Text(vm.getStages(day: day))
 //                    ForEach(day.stages, id:\.self) { stage in
-//                        ForEach(stage.count, id:\.self) { i in
-//                            Text(stage[i])
+////                        Text("\(stage[0])")
+//                        ForEach (index , stage, id:\.self) {  in stage.enumerated()
+//                            Text(stage, index+1)
 //                        }
 //                    }
-//                    Spacer()
-                    //                Text("\(day.stages)")
+                    Spacer()
+//                    Text("\(day.stages[0][0])")
                     
                 }
-//            }
+            }
             
             
         }
@@ -151,13 +153,13 @@ struct MapView: View {
                                     .padding(.bottom, 30)
                             }
                         }
-                        .task{
-                            do {
-                                try await eskomApi.getAreas(lat: Float(item.coordinate.latitude), lon: Float(item.coordinate.longitude))
-                            } catch {
-                                print("Error", error)
-                            }
-                        }
+//                        .task{
+//                            do {
+//                                try await eskomApi.getAreas(lat: Float(item.coordinate.latitude), lon: Float(item.coordinate.longitude))
+//                            } catch {
+//                                print("Error", error)
+//                            }
+//                        }
                     }
                 })
         }
@@ -168,5 +170,6 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
+            .environmentObject(MapViewModel())
     }
 }

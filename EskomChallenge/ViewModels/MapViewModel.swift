@@ -8,8 +8,9 @@
 import Foundation
 import MapKit
 import SwiftUI
+
 class MapViewModel: ObservableObject{
-//    let sitesApi = SitesApi()
+    let eskomApi = EskomApi()
     @Published var sites: [Sites]
     @Published var currentSite = Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)
     
@@ -33,6 +34,18 @@ class MapViewModel: ObservableObject{
                                            span: MKCoordinateSpan(latitudeDelta: 0.2,
                                                                   longitudeDelta: 0.2))
         }
+    }
+    
+    func getStages(day: Day) -> String{
+        let stage = day.stages
+        var result: String = ""
+        for (index,stage) in day.stages.enumerated(){
+            
+//           stageView =  View(stage, index+1)
+            result = stage.first ?? ""
+            return stage.first ?? ""
+        }
+        return result
     }
     
 }

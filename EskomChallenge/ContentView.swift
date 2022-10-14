@@ -18,13 +18,13 @@ struct ContentView: View {
                 Label("Sites", systemImage: "map")
             }.environmentObject(MapViewModel())
         }.accentColor(.red)
-//            .task{
-//                do {
-//                    try await eskomApi.getAreas(lat: -28.559482, lon: 24.937505999999985)
-//                } catch {
-//                    print("Error", error)
-//                }
-//            }
+            .task{
+                do {
+                    try await eskomApi.getAreas(lat: -28.559482, lon: 24.937505999999985)
+                } catch {
+                    print("Error", error)
+                }
+            }
     }
 }
 
