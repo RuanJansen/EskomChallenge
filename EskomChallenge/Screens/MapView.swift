@@ -38,7 +38,7 @@ struct MapView: View {
     }
     @ViewBuilder
     func SiteSelector()-> some View{
-        Text("Offine")
+        Text("Offline")
             .font(.title2)
             .frame(width: .infinity)
             .bold()
