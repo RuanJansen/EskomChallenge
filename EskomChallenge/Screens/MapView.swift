@@ -16,7 +16,8 @@ struct MapView: View {
     var body: some View {
         VStack(alignment: .leading) {
             TopView().padding()
-            MapView().ignoresSafeArea()
+            MapView()
+                .ignoresSafeArea()
                 .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
                 .cornerRadius(30)
                 .padding()
@@ -26,7 +27,7 @@ struct MapView: View {
                     Button{
                         vm.updateRegion(site: site)
                     }label:{
-                        SiteButton(site: site)
+                        SiteButton(site: site).tint(.black).shadow(radius: 5, x: 5, y: 5)
                     }
                 }
             }
@@ -78,8 +79,14 @@ struct MapView: View {
     func SiteButton(site: Sites)-> some View{
         VStack {
             HStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 40, height: 40)
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.white)
+                    Image(systemName: "lightbulb.fill")
+                        .foregroundColor(!true ? .gray : .yellow)
+                }
+                
                 Text(site.name)
                     .font(.title2).fontWeight(.semibold)
                 Spacer()
@@ -90,17 +97,21 @@ struct MapView: View {
                 .frame(height: 0.5)
 //            ForEach(eskomApi.eventData?.schedule.days ?? [Day(date: "1", name: "1", stages: [["1"], ["1"]])], id:\.self) { day in
                 HStack{
-                    Image(true ? "lightbulb.fill"  : "lightbulb.slash.fill")
+                    
+//                    Text(!true ? "Loadshedding"  : "No loadshedding")
+//                    Spacer()
 //                    ForEach(day.stages, id:\.self) { stage in
 //                        ForEach(stage.count, id:\.self) { i in
 //                            Text(stage[i])
 //                        }
 //                    }
 //                    Spacer()
-//                    Text("\(day.)")
+                    //                Text("\(day.stages)")
                     
-//                }
-            }
+                }
+//            }
+            
+            
         }
         .padding()
         .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 15,style: .continuous))
@@ -145,7 +156,7 @@ struct MapView: View {
                                 try await eskomApi.getAreas(lat: Float(item.coordinate.latitude), lon: Float(item.coordinate.longitude))
                             } catch {
                                 print("Error", error)
-                            } 
+                            }
                         }
                     }
                 })

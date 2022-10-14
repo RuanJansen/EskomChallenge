@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SiteView: View {
     @StateObject var eskomApi = EskomApi()
+//    @Binding var currentSite: Sites
     @EnvironmentObject var vm: MapViewModel
     var body: some View {
         ScrollView {
@@ -28,7 +29,7 @@ struct SiteView: View {
     private func TopSection()-> some View{
         HStack {
             VStack(alignment: .leading) {
-                Text("Site A")
+                Text(vm.currentSite.name)
                     .font(.title2.bold())
                 Text("Average days online")
             }
