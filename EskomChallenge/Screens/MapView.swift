@@ -40,7 +40,6 @@ struct MapView: View {
     func SiteSelector()-> some View{
         Text("Offine")
             .font(.title2)
-            .frame(width: .infinity)
             .bold()
     }
     
@@ -56,12 +55,9 @@ struct MapView: View {
                     }
                 }
             } label: {
-//                Label("Provinces", systemImage: "line.3.horizontal.decrease.circle")
                 Text("Provinces")
                     .font(.title2)
                     .bold()
-//
-//                Image(systemName: "line.3.horizontal.decrease.circle")
             }
             
             
@@ -146,5 +142,6 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
+            .environmentObject(MapViewModel())
     }
 }

@@ -34,7 +34,7 @@ class EskomApi{
                 DispatchQueue.main.async { [self] in
                     print("Call Areas")
                     self.areaData = decodedData
-                    id = self.areaData?.areas[0].id ?? ""
+                    id = self.areaData?.areas[1].id ?? ""
                     print(id)
                     getEvents(id: id)
                 }
