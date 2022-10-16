@@ -9,6 +9,12 @@ import SwiftUI
 import MapKit
 
 struct DashboardView: View {
+    
+    @State var siteViewActive: Bool = false
+    @State var sites: Sites
+    @EnvironmentObject var vm: MapViewModel
+    @StateObject var eskomApi = EskomApi()
+    
     @State var progressValue: Float = 0.0
     var body: some View {
         ScrollView{
@@ -33,38 +39,52 @@ struct DashboardView: View {
 //MARK: Active Location Ring
 @ViewBuilder
 private func activeLocationRing() -> some View{
+   
     
     ZStack{
         
         Rectangle()
             .frame(width: 370, height: 150)
             .cornerRadius(25)
+            .foregroundColor(.white)
             
             
-        //progress view
-//
-//        progressBar(progress:self.$progressValue)
-//                .frame(width:160, height: 160)
-//                .padding(20)
-//                .onAppear(){
-//                    DashboardView.progressValue = 0.3
+
         HStack{
-           Text("progressView")
-                .foregroundColor(.white)
-            
+            ZStack{
+                    Text("8/10 \n Locations")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 11))
+                
+                Circle()
+                    .stroke(lineWidth: 10)
+                    .frame(width:80, height:80)
+                    .opacity(0.5)
+                    .foregroundColor(.gray)
+                
+                Circle()
+                    .trim(from: 0.0, to: 0.8)
+                    .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                    .frame(width:80, height:80)
+                    .foregroundColor(Color.red)
+                    
+            }
+            .padding(.trailing)
             VStack(alignment: .leading){
                 HStack{
-                    Image(systemName: "power.circle.fill")
-                        .foregroundColor(.pink)
+                Image(systemName: "exclamationmark.circle.fill")
+                       .foregroundColor(.red)
                         
                     Text("Offline Locations")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
+                        .bold()
                    
                 }
-                Text("current loadshedding Stage")
+                Text("Current Stage")
                     .font(.subheadline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
             }
             
         }
@@ -180,7 +200,17 @@ private func loadsheddingSchedule()-> some View{
             .font(.title3)
             
             
-        RoundedRectangle(cornerRadius: 15)
+        Map(
+            coordinateRegion: $vm.mapRegion,
+            annotationItems: vm.sites,
+            annotationContent: { item in
+                MapAnnotation(coordinate: item.coordinate){
+                    Button(action: {
+                        vm.currentSite = item
+                        siteViewActive = true
+                    })
+                }
+            })
        
             .padding()
             .frame(height: 200)
@@ -189,6 +219,7 @@ private func loadsheddingSchedule()-> some View{
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
     }
 }
+        
