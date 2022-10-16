@@ -73,7 +73,7 @@ struct SiteView: View {
                 .bold()
             Spacer()
             VStack {
-                if days.name == dayText {
+                if days.name == dayText{
                     ForEach(days.stages, id: \.self) { i in
                         Text(i.first ?? "")
                     }

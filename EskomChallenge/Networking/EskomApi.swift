@@ -70,7 +70,7 @@ class EskomApi: ObservableObject{
                     //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
 //                    self.getStages()
 //                    print(self.getLevels().count)
-//                    print(self.getStageTimes(loadSheddingStage: 1))
+                    print(self.getStageTimes(loadSheddingStage: 5))
 //                    print(self.getStageTimes())
                     self.getDays()
                     
