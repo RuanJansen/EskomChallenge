@@ -19,7 +19,7 @@ struct ContentView: View {
             }.environmentObject(MapViewModel())
         }.accentColor(.red)
             .onAppear(){
-//                eskomApi.getAreas()
+//                eskomApi.getAreas(
             }
     }
 }

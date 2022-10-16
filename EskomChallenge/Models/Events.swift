@@ -15,25 +15,38 @@ struct Events: Codable {
 }
 
 // MARK: - Event
-struct Event: Codable {
+struct Event: Codable, Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(start)
+    }
     let end: String
     let note: String
     let start: String
 }
 
 // MARK: - Info
-struct Info: Codable {
+struct Info: Codable, Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(region)
+    }
     let name, region: String
 }
 
 // MARK: - Schedule
-struct Schedule: Codable {
+struct Schedule: Codable, Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(source)
+    }
     let days: [Day]
     let source: String
 }
 
 // MARK: - Day
-struct Day: Codable, Hashable {
+
+struct Day: Codable, Hashable{
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
     let date, name: String
     let stages: [[String]]
 }

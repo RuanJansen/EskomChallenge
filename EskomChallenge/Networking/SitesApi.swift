@@ -8,6 +8,9 @@
 import Foundation
 import MapKit
 class SitesApi{
+    
+    
+    
     static let sites: [Sites] = [
     Sites(id: 1,
           name: "A",
@@ -20,6 +23,10 @@ class SitesApi{
     Sites(id: 3,
           name: "C",
           coordinate: CLLocationCoordinate2D(latitude: -33.9849, longitude: 18.4517),
+          loadshedding: true),
+    Sites(id: 4,
+          name: "D",
+          coordinate: CLLocationCoordinate2D(latitude: -28.559482, longitude: 24.937505999999985),
           loadshedding: true)
     ]
 }
