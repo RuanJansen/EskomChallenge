@@ -16,7 +16,7 @@ class SitesApi{
     Sites(id: 2,
           name: "B",
           coordinate: CLLocationCoordinate2D(latitude: -33.9649, longitude: 18.4547),
-          loadshedding: true),
+          loadshedding: false),
     Sites(id: 3,
           name: "C",
           coordinate: CLLocationCoordinate2D(latitude: -33.9849, longitude: 18.4517),

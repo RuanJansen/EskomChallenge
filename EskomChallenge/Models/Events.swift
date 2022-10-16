@@ -33,7 +33,7 @@ struct Schedule: Codable {
 }
 
 // MARK: - Day
-struct Day: Codable {
+struct Day: Codable, Hashable {
     let date, name: String
     let stages: [[String]]
 }

@@ -11,27 +11,16 @@ import MapKit
 struct MapView: View {
     @State var siteViewActive: Bool = false
     @State var sites: Sites
+    @StateObject var eskomApi = EskomApi()
     @EnvironmentObject var vm: MapViewModel
     
     var body: some View {
         
             VStack(alignment: .leading) {
-                TopView().padding()
-                MapView().ignoresSafeArea()
-                    .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
-                    .cornerRadius(30)
-                    .padding()
-                ScrollView {
-                    SiteSelector().padding()
-                    ForEach(vm.sites) { site in
-                    Button{
-                        vm.updateRegion(site: site)
-                    }label:{
-                        SiteButton(site: site)
-                    }
-                }
-            }
-            .padding()
+                TopView()
+                MapView()
+                SelectorScrollView()
+                
             }.sheet(isPresented: $siteViewActive){
                 SiteView().presentationDetents([.medium, .large])
             }
@@ -60,8 +49,6 @@ struct MapView: View {
                     .bold()
             }
             
-            
-            
             Spacer()
             Button {} label: {
                 Text("City")
@@ -72,33 +59,9 @@ struct MapView: View {
             }
             
         }
-    }
-    //SiteButton
-    @ViewBuilder
-    func SiteButton(site: Sites)-> some View{
-        VStack {
-            HStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 40, height: 40)
-                Text(site.name)
-                    .font(.title2).fontWeight(.semibold)
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.title2)
-            }
-            Rectangle()
-                .frame(height: 0.5)
-            HStack{
-                Image(systemName: "lightbulb.slash.fill")
-                Text("18:00 - 20:00")
-                Spacer()
-            }
-        }
         .padding()
-        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 15,style: .continuous))
-        .padding(.horizontal,10)
     }
-    
+
     //Map View
     @ViewBuilder
     func MapView()-> some View{
@@ -135,6 +98,80 @@ struct MapView: View {
                     }
                 })
         }
+        .ignoresSafeArea()
+            .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
+            .cornerRadius(30)
+            .padding()
+    }
+    
+    //SiteButton
+    @ViewBuilder
+    func SiteButton(site: Sites)-> some View{
+        VStack {
+            HStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .frame(width: 40, height: 40)
+                Text(site.name)
+                    .font(.title2).fontWeight(.semibold)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.title2)
+            }
+            Rectangle()
+                .frame(height: 0.5)
+            HStack{
+                Image(systemName: "lightbulb.slash.fill")
+                ForEach(vm.sites) { siteTime in
+                    
+                }
+                Text("18:00 - 20:00")
+                Spacer()
+            }
+        }
+        .padding()
+        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 15,style: .continuous))
+        .padding(.horizontal,10)
+    }
+    
+    //Scroll View
+    @ViewBuilder
+    func SelectorScrollView()-> some View{
+        ScrollView {
+            SiteSelector().padding()
+            ForEach(vm.sites) { site in
+            Button{
+                vm.updateRegion(site: site)
+            }label:{
+//                SiteButton(site: site)
+                VStack {
+                    HStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 40, height: 40)
+                        Text(site.name)
+                            .font(.title2).fontWeight(.semibold)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.title2)
+                    }
+                    Rectangle()
+                        .frame(height: 0.5)
+                    HStack{
+                        Spacer()
+                        Image(systemName: "lightbulb.slash.fill")
+                        
+                        VStack {
+                            Text(eskomApi.getStageTimes().first ?? "")
+                        }
+                        
+                    }
+                }
+                .padding()
+                .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 15,style: .continuous))
+                .padding(.horizontal,10)
+            }
+        }
+    }
+    .padding()
     }
 }
 

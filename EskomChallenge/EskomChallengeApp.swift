@@ -12,6 +12,7 @@ struct EskomChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }

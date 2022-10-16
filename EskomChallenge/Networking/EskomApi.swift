@@ -7,9 +7,9 @@
 
 import Foundation
 
-class EskomApi{
+class EskomApi: ObservableObject{
     var areaData: Areas?
-    var eventData: Events?
+    @Published var eventData: Events?
     let token: String = "YVKYuUQ2ZjDFXGxztCeA"
 //    let lat: Float = -26.0269658
 //    let lon: Float = 28.0137339
@@ -17,6 +17,12 @@ class EskomApi{
     let lat: Float = -33.918861
     let lon: Float = 18.423300
 
+    init(areaData: Areas? = nil, eventData: Events? = nil) {
+        self.areaData = areaData
+        self.eventData = eventData
+        getAreas()
+    }
+    
     func getAreas(){
         var id: String = ""
         let urlAreas: String = "https://developer.sepush.co.za/business/2.0/areas_nearby?lat=\(lat)&lon=\(lon)"
@@ -35,7 +41,6 @@ class EskomApi{
                     print("Call Areas")
                     self.areaData = decodedData
                     id = self.areaData?.areas[1].id ?? ""
-                    print(id)
                     getEvents(id: id)
                 }
             }catch let error{
@@ -61,9 +66,14 @@ class EskomApi{
                 DispatchQueue.main.async {
                     self.eventData = decodedData
                     print("Call Events")
-                    print(self.eventData?.events[0].start ?? "")
-                    print(self.eventData?.events[0].note ?? "")
-                    print(self.eventData?.events[0].end ?? "")
+                    //Days are number of days and stages are the stages for that day
+                    //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
+//                    self.getStages()
+//                    print(self.getLevels().count)
+//                    print(self.getStageTimes(loadSheddingStage: 1))
+//                    print(self.getStageTimes())
+                    self.getDays()
+                    
                 }
             }catch let error{
                 print(error)
@@ -71,4 +81,60 @@ class EskomApi{
         }
         .resume()
     }
+    
+    func getLevels() -> [[String]]{
+        //Get all the levels to print and maybe get
+        let levels = eventData?.schedule.days.first?.stages ?? [[String]]()
+        return levels
+    }
+    
+    //Gets the stages from the events notes
+    func getStageTimes(loadSheddingStage: Int = 1) -> [String]{
+        // Get the stage were on for the first part of the 2d array
+        let currentStage = eventData?.events.first?.note ?? ""
+        let formattedStage = currentStage.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let stageNumber = (Int(formattedStage) ?? 0) - 1
+        //we have the stage number
+        // Display all the stage times for the stage
+        let stageTimes = eventData?.schedule.days.first?.stages[loadSheddingStage]
+        
+        return stageTimes ?? [String]()
+//        for times in stageTimes ?? [String]() {
+//            return times
+//        }
+        
+    }
+    
+    func getStageTimes() -> [String]{
+        // Get the stage were on for the first part of the 2d array
+        let currentStage = eventData?.events.first?.note ?? ""
+        let formattedStage = currentStage.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let stageNumber = (Int(formattedStage) ?? 0) - 1
+        //we have the stage number
+        // Display all the stage times for the stage
+        let stageTimes = eventData?.schedule.days.first?.stages[stageNumber]
+        
+        return stageTimes ?? [String]()
+//        for times in stageTimes ?? [String]() {
+//            return times
+//        }
+        
+    }
+    
+    //Get the days of the week for loadshedding 
+    func getDays() -> [Day]{
+        let days = eventData?.schedule.days ?? [Day]()
+//        let daysRe = days.map { Day in
+//            Day.name
+//        }
+        for day in days {
+            print(day.name.prefix(3))
+        }
+        return days
+    }
 }
+
+    
+
+
+

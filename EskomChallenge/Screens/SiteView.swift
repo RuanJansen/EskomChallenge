@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SiteView: View {
+    @StateObject var eskomApi = EskomApi()
     var body: some View {
         ScrollView {
             VStack {
@@ -54,8 +55,8 @@ struct SiteView: View {
                 Spacer()
             }
             .padding(.bottom,20)
-            ForEach(0 ..< 5) { item in
-                ScheduleRow()
+            ForEach(eskomApi.getDays(), id: \.self) { item in
+                ScheduleRow(dayText: item.name, days: item)
             }
         }
         .padding()
@@ -66,14 +67,16 @@ struct SiteView: View {
     }
     
     @ViewBuilder
-    func ScheduleRow()-> some View{
+    func ScheduleRow(dayText: String, days: Day)-> some View{
         HStack(alignment: .top){
-            Text("MON")
+            Text(dayText.prefix(3))
                 .bold()
             Spacer()
             VStack {
-                ForEach(0 ..< 3) { item in
-                    Text("00:00 - 00:00")
+                if days.name == dayText {
+                    ForEach(days.stages, id: \.self) { i in
+                        Text(i.first ?? "")
+                    }
                 }
             }
         }
