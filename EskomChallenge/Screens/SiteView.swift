@@ -10,6 +10,7 @@ import Charts
 struct SiteView: View {
     @EnvironmentObject var vm: MapViewModel
     @StateObject var eskomApi = EskomApi()
+    @State var provinceName: String = "Province"
     var sitesApi = SitesApi()
     var body: some View {
         ScrollView {

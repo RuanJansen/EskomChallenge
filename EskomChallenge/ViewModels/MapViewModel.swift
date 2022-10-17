@@ -20,6 +20,8 @@ class MapViewModel: ObservableObject{
             latitudeDelta: 15,
          longitudeDelta: 15))
     let provinces: [String] = ["Clear", "Eastern Cape", "Free State", "Gauteng", "KwaZulu-Natal", "Limpopo", "Mpumalanga", "Northern Cape", "North West", "Western Cape"]
+    let filterdSites: [String] = ["company A", "company B", "Company C"]
+    let dayOfWeek: [String] = ["Mon","Tues","Weds","Thurs","Fri","Sat","Sun"]
 
     
     init(){

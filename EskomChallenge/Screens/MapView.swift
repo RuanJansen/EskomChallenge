@@ -12,6 +12,7 @@ struct MapView: View {
     @State var siteViewActive: Bool = false
     @State var sites: Sites
     @StateObject var eskomApi = EskomApi()
+    @State var provinceName: String = "Province"
     @EnvironmentObject var vm: MapViewModel
     
     var body: some View {
@@ -35,29 +36,27 @@ struct MapView: View {
     
     @ViewBuilder
     func TopView()-> some View{
-        HStack {
+        HStack{
+            Text("Province")
+                .font(.title2)
+                .bold()
+            
+            Spacer()
+            
+            
             Menu {
                 ForEach(vm.provinces, id: \.self){ province in
                     Button{
-                        //Filter
+                        provinceName = province
                     } label: {
                         Text(province)
                     }
                 }
             } label: {
-                Text("Provinces")
-                    .font(.title2)
-                    .bold()
+                Text(provinceName == "Clear" ? "Province" : provinceName)
             }
             
-            Spacer()
-            Button {} label: {
-                Text("City")
-                    .fontWeight(.light)
-                    .foregroundColor(.white)
-                    .padding(.horizontal,15)
-                    .background(.black, in: RoundedRectangle(cornerRadius: 15))
-            }
+            
             
         }
         .padding()

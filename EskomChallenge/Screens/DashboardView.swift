@@ -7,7 +7,7 @@
 
 import SwiftUI
 import MapKit
-
+import Charts
 struct DashboardView: View {
     
     @State var siteViewActive: Bool = false
@@ -15,14 +15,12 @@ struct DashboardView: View {
     @EnvironmentObject var vm: MapViewModel
     @StateObject var eskomApi = EskomApi()
     @State var provinceName: String = "Province"
+    @State var siteName: String = "Sites"
     @State var progressValue: Float = 0.0
     @State var dayOfWeek: String = "weekday"
     
-//
-//    //collapsableView
-//    @State var label: () -> Text
-//    @State var content: () -> ContentView
-//    @State private var collapsed: Bool = true
+    //
+
     
     
     var body: some View {
@@ -31,14 +29,65 @@ struct DashboardView: View {
                 locationChoice()
                     .padding()
                 activeLocationRing()
-                // locationChoice()
+              
+                totalDowntimeChart()
                 
+               
+                Collapsible {
+                    
+                    
+                        Text( "LoadShedding")
+                            .font(.title2)
+                            .bold()
+                        
+                } content: {
+                    loadsheddingSchedule()
+
+                }
                 Divider()
-                loadsheddingSchedule()
-                    .padding()
                 mapComponent()
+                    .cornerRadius(30)
             }
         }
+    }
+    //MARK: Chart View for downtime
+    
+    @ViewBuilder
+    func  totalDowntimeChart()->some View{
+        VStack(){
+            VStack(alignment: .leading){
+                HStack(){
+                    Text("Total Site Down Time")
+                        .font(.title2)
+                    Spacer()
+                    Menu {
+                        ForEach(vm.filterdSites, id: \.self){ site in
+                            Button{
+                                siteName = site
+                            } label: {
+                                Text(site)
+                            }
+                        }
+                    } label: {
+                        Text(siteName == "Clear" ? "Sites" : siteName)
+                    }
+                    
+                }
+            }
+            .padding()
+            VStack{
+                Chart{
+                    ForEach(vm.sites[0].week, id: \.self){ value in
+                        LineMark(x: .value("Weekly", value.days),
+                                 y: .value("Hours", value.hours)
+                        ).foregroundStyle(.orange)
+                        
+                    }
+                }
+                .frame(width: 340, height: 150)
+            }
+        }
+        
     }
     
     //MARK: MapComponent area
@@ -103,7 +152,7 @@ struct DashboardView: View {
             
             HStack{
                 ZStack{
-                    Text("8/10 \n Locations")
+                    Text("1/1 \n Locations")
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
                         .font(.system(size: 11))
@@ -115,7 +164,7 @@ struct DashboardView: View {
                         .foregroundColor(.gray)
                     
                     Circle()
-                        .trim(from: 0.0, to: 0.8)
+                        .trim(from: 0.0, to: 1.0)
                         .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
                         .frame(width:80, height:80)
                         .foregroundColor(Color.red)
@@ -134,7 +183,7 @@ struct DashboardView: View {
                             .bold()
                         
                     }
-                    Text("Current Stage")
+                    Text("Current Loadshedding Stage: \(eskomApi.getCurrentStageValue())")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
@@ -202,45 +251,35 @@ struct DashboardView: View {
     private func loadsheddingSchedule()-> some View{
         VStack(alignment: .leading){
             HStack{
-                Text("LoadShedding Schedule")
+                Text("Schedule")
                     .font(.title3)
                     .multilineTextAlignment(.leading)
                 Spacer()
                 
-                //                                Menu{
-                //                                    ForEach(eskomApi.getDays(), id: \.self){
-                //                                        dayOfWeek in
-                //                                        Button{
-                //                                           dayOfWeek = eskomApi.getDays()
-                //                                        }label:{
-                //                                            Text(eskomApi.getDays())
-                //                                        }
-                //
-                //                                    }
-                //                                }
-                Menu("Day"){
-                    
-                    Button("Monday"){}
-                    Button("Tuesday"){}
-                    Button("Wednesday"){}
-                    Button("Thursday"){}
-                    Button("Friday"){}
-                    Button("Saturday"){}
-                    Button("Sunday"){}
-                    
-                    
+                
+                Menu {
+                    ForEach(vm.dayOfWeek, id: \.self){ day in
+                        Button{
+                            dayOfWeek = day
+                        } label: {
+                            Text(day)
+                        }
+                    }
+                } label: {
+                    Text(dayOfWeek == "Clear" ? "Days" : dayOfWeek)
                 }
-                Menu("Site"){
-                    
-                    Button("Monday"){}
-                    Button("Tuesday"){}
-                    Button("Wednesday"){}
-                    Button("Thursday"){}
-                    Button("Friday"){}
-                    Button("Saturday"){}
-                    Button("Sunday"){}
-                    
-                    
+                .padding()
+                
+                Menu {
+                    ForEach(vm.filterdSites, id: \.self){ site in
+                        Button{
+                            siteName = site
+                        } label: {
+                            Text(site)
+                        }
+                    }
+                } label: {
+                    Text(siteName == "Clear" ? "Sites" : siteName)
                 }
             }
             ScrollView(.horizontal, showsIndicators: false){
@@ -248,11 +287,13 @@ struct DashboardView: View {
                     // we want to get the times for different stages.
                     
                     ForEach(1..<8){ stageValue in
-                        VStack{
-                            Text("Stage\(stageValue)")
+                        VStack(){
+                            Text("Stage \(stageValue)")
                                 .foregroundColor(.black)
                                 .font(.title2)
-                            
+                                .bold()
+                                .padding()
+                            Divider()
                             ForEach(eskomApi.getStageTimes(loadSheddingStage: stageValue), id: \.self){ stage in
                                 Text("\(stage)")
                                     .foregroundColor(.black)
@@ -261,9 +302,10 @@ struct DashboardView: View {
                             }
                         }
                     }
+                    //
                     .frame(width: 180, height: 180)
+                    .background(.white)
                     .cornerRadius(25)
-                    .background(.gray)
                     
                     
                 }
@@ -272,35 +314,44 @@ struct DashboardView: View {
             }
         }
         
-        
-        //        //MARK: collapsing view
-        //        @ViewBuilder
-        //        func collapsible() -> some View{
-        //            VStack{
-        //                Button(action: {self.collapsed.toggle()},
-        //                       label: {
-        //                    HStack{
-        //                        self.label()
-        //                        Spacer()
-        //                        Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
-        //                    }
-        //                    .padding(.bottom, 1)
-        //
-        //                })
-        //                .buttonStyle(PlainButtonStyle())
-        //                VStack{
-        //                    self.content
-        //                }
-        //                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
-        //                .clipped()
-        //                .animation(.easeOut)
-        //                .transition(.slide)
-        //            }
-        //        }
-        //    }
-        
     }
-}
+    
+    
+        //MARK: collapsing view
+    
+        struct Collapsible<Content: View>: View{
+            //collapsableView
+               @State var label: () -> Text
+               @State var content: () -> Content
+               @State private var collapsed: Bool = true
+            
+            var body: some View{
+                VStack{
+                    Button(action: {self.collapsed.toggle()},
+                           label: {
+                        HStack{
+                            self.label()
+                            Spacer()
+                            Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+                        }
+                        .padding(.bottom, 1)
+                        
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                    VStack{
+                        self.content()
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
+                    .clipped()
+                    .animation(.easeInOut)
+                    .transition(.slide)
+                }
+            }
+        }
+    }
+
+        
+
 
 
 

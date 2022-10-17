@@ -148,6 +148,15 @@ class EskomApi: ObservableObject{
         
         self.currentStage = stageNumber
     }
+    
+    func getCurrentStageValue() -> Int{
+        // Get the stage were on for the first part of the 2d array
+        let currentStage = eventData?.events.first?.note ?? ""
+        let formattedStage = currentStage.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let stageNumber = (Int(formattedStage) ?? 0) - 1
+        
+        return stageNumber
+    }
 }
 
 
