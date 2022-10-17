@@ -111,8 +111,12 @@ struct MapView: View {
     func SiteButton(site: Sites)-> some View{
         VStack {
             HStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 40, height: 40)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 40, height: 40)
+                    Image(systemName: "lightbulb.slash.fill")
+                        .foregroundColor(.white)
+                }
                 Text(site.name)
                     .font(.title2).fontWeight(.semibold)
                 Spacer()
@@ -122,9 +126,8 @@ struct MapView: View {
             Rectangle()
                 .frame(height: 0.5)
             HStack{
-                Image(systemName: "lightbulb.slash.fill")
                 ForEach(vm.sites) { siteTime in
-                    
+                    //?
                 }
                 Text("18:00 - 20:00")
                 Spacer()

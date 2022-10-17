@@ -13,7 +13,7 @@ class SitesApi{
     
     static let sites: [Sites] = [
         Sites(id: 1,
-              name: "A",
+              name: "Site A",
               coordinate: CLLocationCoordinate2D(latitude: -33.9249, longitude: 18.4241),
               loadshedding: true, week: [
                 Week(

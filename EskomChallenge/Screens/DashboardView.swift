@@ -29,25 +29,16 @@ struct DashboardView: View {
                 locationChoice()
                     .padding()
                 activeLocationRing()
-              
                 totalDowntimeChart()
-                
-               
                 Collapsible {
-                    
-                    
                         Text( "LoadShedding")
                             .font(.title2)
-                        
-                
-                    
                 } content: {
                     HStack{
                         loadsheddingSchedule()
                     }
                     .padding()
-
-                }
+                }.padding()
                 Divider()
                 mapComponent()
                     .cornerRadius(30)
@@ -133,7 +124,7 @@ struct DashboardView: View {
             .padding()
             //            .frame(height: 200)
             .foregroundColor(.gray)
-            .ignoresSafeArea()
+//            .ignoresSafeArea()
             .frame(height: UIScreen.main.bounds.height/4.5, alignment: .top)
             .cornerRadius(30)
             
@@ -259,8 +250,6 @@ struct DashboardView: View {
                     .font(.title3)
                     .multilineTextAlignment(.leading)
                 Spacer()
-                
-                
                 Menu {
                     ForEach(vm.dayOfWeek, id: \.self){ day in
                         Button{
@@ -273,7 +262,6 @@ struct DashboardView: View {
                     Text(dayOfWeek == "Clear" ? "Days" : dayOfWeek)
                 }
                 .padding()
-                
                 Menu {
                     ForEach(vm.filterdSites, id: \.self){ site in
                         Button{
@@ -289,7 +277,6 @@ struct DashboardView: View {
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 20){
                     // we want to get the times for different stages.
-                    
                     ForEach(1..<8){ stageValue in
                         VStack(){
                             Text("Stage \(stageValue)")
@@ -302,12 +289,11 @@ struct DashboardView: View {
                                 Text("\(stage)")
                                     .foregroundColor(.black)
                                     .font(.subheadline)
-                                
                             }
                         }
                     }
                     //
-                    .frame(width: 180, height: 180)
+                    .frame(width: 175, height: 180)
                     .background(.white)
                     .cornerRadius(25)
                     
