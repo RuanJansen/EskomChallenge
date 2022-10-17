@@ -41,7 +41,9 @@ struct DashboardView: View {
                 .padding(.leading)
                 .font(.title3)
                 
-                
+            
+            
+            
             Map(
                 coordinateRegion: $vm.mapRegion,
                 annotationItems: vm.sites,
@@ -53,7 +55,6 @@ struct DashboardView: View {
                         })
                     }
                 })
-           
                 .padding()
                 .frame(height: 200)
                 .foregroundColor(.gray)

@@ -12,7 +12,6 @@ class MapViewModel: ObservableObject{
 //    let sitesApi = SitesApi()
     @Published var sites: [Sites]
     @Published var currentSite = Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)
-    
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
             latitude: -28.559482,
