@@ -20,6 +20,7 @@ class MapViewModel: ObservableObject{
             latitudeDelta: 15,
          longitudeDelta: 15))
     let provinces: [String] = ["Clear", "Eastern Cape", "Free State", "Gauteng", "KwaZulu-Natal", "Limpopo", "Mpumalanga", "Northern Cape", "North West", "Western Cape"]
+
     
     init(){
         //        let site = SitesApi.sites

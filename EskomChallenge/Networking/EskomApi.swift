@@ -117,11 +117,17 @@ class EskomApi: ObservableObject{
     }
     
     //Get the days of the week for loadshedding
-    func getDays() -> [Day]{
+    func getDays() -> [String]{
+        var emptyDay = [String]()
         let days = eventData?.schedule.days ?? [Day]()
         for day in days {
-            print(day.name.prefix(3))
+            emptyDay.append(day.name)
         }
+        return emptyDay
+    }
+    
+    func getDays() -> [Day]{
+        let days = eventData?.schedule.days ?? [Day]()
         return days
     }
     
