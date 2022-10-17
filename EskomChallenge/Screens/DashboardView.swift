@@ -38,10 +38,14 @@ struct DashboardView: View {
                     
                         Text( "LoadShedding")
                             .font(.title2)
-                            .bold()
                         
+                
+                    
                 } content: {
-                    loadsheddingSchedule()
+                    HStack{
+                        loadsheddingSchedule()
+                    }
+                    .padding()
 
                 }
                 Divider()
