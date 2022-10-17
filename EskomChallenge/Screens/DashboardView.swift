@@ -53,7 +53,7 @@ struct DashboardView: View {
     //MARK: Chart View for downtime
     
     @ViewBuilder
-    func  totalDowntimeChart()->some View{
+    func totalDowntimeChart()->some View{
         VStack(){
             VStack(alignment: .leading){
                 HStack(){
@@ -80,7 +80,7 @@ struct DashboardView: View {
                     ForEach(vm.sites[0].week, id: \.self){ value in
                         LineMark(x: .value("Weekly", value.days),
                                  y: .value("Hours", value.hours)
-                        ).foregroundStyle(.orange)
+                        ).foregroundStyle(.red)
                         
                     }
                 }
@@ -108,7 +108,7 @@ struct DashboardView: View {
                             Image(systemName: "map.circle")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 30, height: 30)
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .padding(6)

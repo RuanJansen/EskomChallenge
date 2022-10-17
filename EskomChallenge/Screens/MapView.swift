@@ -23,7 +23,7 @@ struct MapView: View {
                 SelectorScrollView()
                 
             }.sheet(isPresented: $siteViewActive){
-                SiteView().presentationDetents([.fraction(0.5), .fraction(1)])
+                SiteView(site: $sites).presentationDetents([.fraction(0.5), .fraction(1)])
             }
     }
     
@@ -71,10 +71,10 @@ struct MapView: View {
                 annotationItems: vm.sites,
                 annotationContent: { item in
                     MapAnnotation(coordinate: item.coordinate){
-                        Button(action: {
+                        Button {
                             vm.currentSite = item
                             siteViewActive = true
-                        }) {
+                        } label:{
                             VStack{
                                 Image(systemName: "map.circle")
                                     .resizable()
@@ -94,12 +94,14 @@ struct MapView: View {
                                     .offset(y: -10)
                                     .padding(.bottom, 30)
                             }
+                        }.onAppear{
+                            sites = item
                         }
                     }
                 })
         }
         .ignoresSafeArea()
-            .frame(height: UIScreen.main.bounds.height/3, alignment: .top)
+        .frame(height: UIScreen.main.bounds.height/3.5, alignment: .top)
             .cornerRadius(30)
             .padding()
     }
