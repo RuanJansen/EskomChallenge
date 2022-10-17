@@ -197,22 +197,31 @@ struct DashboardView: View {
                     .font(.title3)
                     .multilineTextAlignment(.leading)
                 Spacer()
-                Menu("Day"){
-                    
-                    Button("Monday"){}
-                    Button("Tuesday"){}
-                    Button("Wednesday"){}
-                    Button("Thursday"){}
-                    Button("Friday"){}
-                    Button("Saturday"){}
-                    Button("Sunday"){}
-                    
-                    
+                
+                Menu{
+                    ForEach(vm.weekdays, id: \.self){
+                        currentWeekday in
+                        Button{
+                            currentWeekday = weekday
+                        }
+                    }
                 }
+//                Menu("Day"){
+//
+//                    Button("Monday"){}
+//                    Button("Tuesday"){}
+//                    Button("Wednesday"){}
+//                    Button("Thursday"){}
+//                    Button("Friday"){}
+//                    Button("Saturday"){}
+//                    Button("Sunday"){}
+//
+//
+//                }
             }
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 20){
-                    
+                    // we want to get the times for different stages.
                     ForEach(1..<9){
                         
                         Text("Stage \($0)")
