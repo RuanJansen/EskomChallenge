@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
-
+import Charts
 struct SiteView: View {
+    @EnvironmentObject var vm: MapViewModel
     @StateObject var eskomApi = EskomApi()
+    var sitesApi = SitesApi()
     var body: some View {
         ScrollView {
             VStack {
                 TopSection()
                     .padding(.vertical)
                 ChartView()
-                Divider()
+//                Divider()
                     .padding(.vertical)
                 ScheduleView()
             }
@@ -38,13 +40,25 @@ struct SiteView: View {
     
     @ViewBuilder
     private func ChartView()-> some View{
-        RoundedRectangle(cornerRadius: 15,style: .continuous)
-            .frame(width: 380, height: 280)
-            .foregroundColor(.gray)
-         
-        RoundedRectangle(cornerRadius: 10, style: .continuous)
-            .frame(width: 380, height: 25)
-            .foregroundColor(.gray)
+        ZStack{
+            RoundedRectangle(cornerRadius: 15,style: .continuous)
+                .frame(width: 380, height: 280)
+                .foregroundColor(.white)
+            Chart{
+                ForEach(vm.sites[0].week, id: \.self){ item in
+                    LineMark(x: .value("Days of the week", item.days),
+                             y: .value("Hours", item.hours))
+                }.foregroundStyle(.red)
+                    
+            }
+//            .chartForegroundStyleScale([
+//                "Stage 1 - 2": .green,
+//                "Stage 3 - 4": .yellow,
+//                "Stage 5 - 6": .orange,
+//                "Stage 7 - 8": .red,
+//            ])
+            .padding()
+        }
     }
     
     @ViewBuilder
@@ -60,10 +74,10 @@ struct SiteView: View {
             }
         }
         .padding()
-        .background{
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(lineWidth: 1)
-        }
+//        .background{
+//            RoundedRectangle(cornerRadius: 15)
+//                .stroke(lineWidth: 1)
+//        }
     }
     
     @ViewBuilder

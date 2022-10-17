@@ -22,7 +22,7 @@ struct MapView: View {
                 SelectorScrollView()
                 
             }.sheet(isPresented: $siteViewActive){
-                SiteView().presentationDetents([.medium, .large])
+                SiteView().presentationDetents([.fraction(0.5), .fraction(1)])
             }
     }
     
@@ -179,7 +179,7 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
+        MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false, week: [Week(days: "Monday", hours: 2.5)]))
             .environmentObject(MapViewModel())
     }
 }
