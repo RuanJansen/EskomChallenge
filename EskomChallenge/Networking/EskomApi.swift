@@ -68,11 +68,10 @@ class EskomApi: ObservableObject{
                     print("Call Events")
                     //Days are number of days and stages are the stages for that day
                     //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
-//                    self.getStages()
-//                    print(self.getLevels().count)
+
                     print(self.getStageTimes(loadSheddingStage: 5))
-//                    print(self.getStageTimes())
-                    self.getDays()
+
+                    
                     
                 }
             }catch let error{
