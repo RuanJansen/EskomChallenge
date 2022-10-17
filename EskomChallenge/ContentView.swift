@@ -13,7 +13,7 @@ struct ContentView: View {
         TabView{
             DashboardView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)).tabItem{
                 Label("Dashboard", systemImage: "chart.pie")
-            }
+            }.environmentObject(MapViewModel())
             MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)).tabItem{
                 Label("Sites", systemImage: "map")
             }.environmentObject(MapViewModel())

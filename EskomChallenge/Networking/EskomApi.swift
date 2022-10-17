@@ -68,11 +68,10 @@ class EskomApi: ObservableObject{
                     print("Call Events")
                     //Days are number of days and stages are the stages for that day
                     //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
-//                    self.getStages()
-//                    print(self.getLevels().count)
+
                     print(self.getStageTimes(loadSheddingStage: 5))
-//                    print(self.getStageTimes())
-                    self.getStages()
+
+                    
                     
                 }
             }catch let error{
@@ -124,21 +123,13 @@ class EskomApi: ObservableObject{
     //Get the days of the week for loadshedding 
     func getDays() -> [Day]{
         let days = eventData?.schedule.days ?? [Day]()
-        
+//        let daysRe = days.map { Day in
+//            Day.name
+//        }
         for day in days {
             print(day.name.prefix(3))
         }
         return days
-    }
-    
-    func getStages(){
-        let days = eventData?.schedule.days ?? [Day]()
-        let stage = [String]()
-        for day in days {
-            for stage in day.stages{
-                print(stage)
-            }
-        }
     }
 }
 

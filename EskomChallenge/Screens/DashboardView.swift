@@ -31,7 +31,36 @@ struct DashboardView: View {
             }
         }
     }
- 
+    
+    //MARK: MapComponent area
+    @ViewBuilder
+    func  mapComponent()->some View{
+
+        VStack(alignment:.leading){
+            Text("All Locations")
+                .padding(.leading)
+                .font(.title3)
+                
+            
+            
+            
+            Map(
+                coordinateRegion: $vm.mapRegion,
+                annotationItems: vm.sites,
+                annotationContent: { item in
+                    MapAnnotation(coordinate: item.coordinate){
+                        Button("Button to change", action: {
+                            vm.currentSite = item
+                            siteViewActive = true
+                        })
+                    }
+                })
+                .padding()
+                .frame(height: 200)
+                .foregroundColor(.gray)
+        }
+    }
+    
     //MARK: Active Location Ring
     @ViewBuilder
     private func activeLocationRing() -> some View{
@@ -89,8 +118,6 @@ struct DashboardView: View {
             
            
         }
-
-
 
     struct progressBar: View{
         
@@ -186,40 +213,17 @@ struct DashboardView: View {
             }
         }
     }
-    //MARK: MapComponent area
-    @ViewBuilder
-     func  mapComponent()->some View{
-
-        VStack(alignment:.leading){
-            Text("All Locations")
-                .padding(.leading)
-                .font(.title3)
-                
-                
-            Map(
-                coordinateRegion: $vm.mapRegion,
-                annotationItems: vm.sites,
-                annotationContent: { item in
-                    MapAnnotation(coordinate: item.coordinate){
-                        Button(action: {
-                            vm.currentSite = item
-                            siteViewActive = true
-                        })
-                    }
-                })
-           
-                .padding()
-                .frame(height: 200)
-                .foregroundColor(.gray)
-        }
-    }
-
+ 
 }
+
+
+
 
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false))
+            .environmentObject(MapViewModel())
     }
 }
         

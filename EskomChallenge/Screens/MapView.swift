@@ -25,6 +25,7 @@ struct MapView: View {
                 SiteView().presentationDetents([.medium, .large])
             }
     }
+    
     @ViewBuilder
     func SiteSelector()-> some View{
         Text("Offine")

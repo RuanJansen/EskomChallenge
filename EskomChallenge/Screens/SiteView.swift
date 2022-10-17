@@ -41,7 +41,7 @@ struct SiteView: View {
         RoundedRectangle(cornerRadius: 15,style: .continuous)
             .frame(width: 380, height: 280)
             .foregroundColor(.gray)
-        
+         
         RoundedRectangle(cornerRadius: 10, style: .continuous)
             .frame(width: 380, height: 25)
             .foregroundColor(.gray)
