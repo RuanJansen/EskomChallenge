@@ -10,13 +10,14 @@ import Foundation
 class EskomApi: ObservableObject{
     var areaData: Areas?
     @Published var eventData: Events?
-    let token: String = "YVKYuUQ2ZjDFXGxztCeA"
-//    let lat: Float = -26.0269658
-//    let lon: Float = 28.0137339
+    @Published var currentStage: Int?
+    let token: String = "9XkfgfwNk8QHTGEB44nd"
+    //    let lat: Float = -26.0269658
+    //    let lon: Float = 28.0137339
     
     let lat: Float = -33.918861
     let lon: Float = 18.423300
-
+    
     init(areaData: Areas? = nil, eventData: Events? = nil) {
         self.areaData = areaData
         self.eventData = eventData
@@ -26,7 +27,7 @@ class EskomApi: ObservableObject{
     func getAreas(){
         var id: String = ""
         let urlAreas: String = "https://developer.sepush.co.za/business/2.0/areas_nearby?lat=\(lat)&lon=\(lon)"
-
+        
         guard let url = URL(string: urlAreas) else {
             fatalError("Invalid URL")
         }
@@ -47,12 +48,12 @@ class EskomApi: ObservableObject{
                 print(error)
             }
         }
-            .resume()
+        .resume()
     }
-
+    
     func getEvents(id: String){
         let urlEvents: String = "https://developer.sepush.co.za/business/2.0/area?id=\(id)&test=current"
-
+        
         guard let url = URL(string: urlEvents) else {
             fatalError("Invalid URL")
         }
@@ -68,9 +69,9 @@ class EskomApi: ObservableObject{
                     print("Call Events")
                     //Days are number of days and stages are the stages for that day
                     //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
-
-                    print(self.getStageTimes(loadSheddingStage: 5))
-
+                    
+//                    print(self.getStageTimes(loadSheddingStage: 5))
+//                    self.getStages(currentStage: self.currentStage ?? 1)
                     
                     
                 }
@@ -98,9 +99,9 @@ class EskomApi: ObservableObject{
         let stageTimes = eventData?.schedule.days.first?.stages[loadSheddingStage]
         
         return stageTimes ?? [String]()
-//        for times in stageTimes ?? [String]() {
-//            return times
-//        }
+        //        for times in stageTimes ?? [String]() {
+        //            return times
+        //        }
         
     }
     
@@ -112,28 +113,38 @@ class EskomApi: ObservableObject{
         //we have the stage number
         // Display all the stage times for the stage
         let stageTimes = eventData?.schedule.days.first?.stages[stageNumber]
-        
         return stageTimes ?? [String]()
-//        for times in stageTimes ?? [String]() {
-//            return times
-//        }
-        
     }
     
-    //Get the days of the week for loadshedding 
+    //Get the days of the week for loadshedding
     func getDays() -> [Day]{
         let days = eventData?.schedule.days ?? [Day]()
-//        let daysRe = days.map { Day in
-//            Day.name
-//        }
         for day in days {
             print(day.name.prefix(3))
         }
         return days
     }
+    
+    func getStages(currentStage: Int = 1) {
+        let days = eventData?.schedule.days ?? [Day]()
+        for day in days {
+            for stages in day.stages[1]{
+                    print(stages)
+            }
+        }
+    }
+    
+    func getCurrentStage(){
+        // Get the stage were on for the first part of the 2d array
+        let currentStage = eventData?.events.first?.note ?? ""
+        let formattedStage = currentStage.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let stageNumber = (Int(formattedStage) ?? 0) - 1
+        
+        self.currentStage = stageNumber
+    }
 }
 
-    
+
 
 
 

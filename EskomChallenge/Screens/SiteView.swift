@@ -74,8 +74,8 @@ struct SiteView: View {
             Spacer()
             VStack {
                 if days.name == dayText{
-                    ForEach(days.stages, id: \.self) { i in
-                        Text(i.first ?? "")
+                    ForEach(days.stages[eskomApi.currentStage ?? 1], id: \.self) { i in
+                        Text(i)
                     }
                 }
             }
