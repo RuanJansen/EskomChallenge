@@ -11,7 +11,7 @@ struct ContentView: View {
     let eskomApi = EskomApi()
     var body: some View {
         TabView{
-            DashboardView().tabItem{
+            DashboardView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)).tabItem{
                 Label("Dashboard", systemImage: "chart.pie")
             }
             MapView(sites: Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false)).tabItem{
