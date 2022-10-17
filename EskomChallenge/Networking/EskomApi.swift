@@ -12,8 +12,6 @@ class EskomApi: ObservableObject{
     @Published var eventData: Events?
     @Published var currentStage: Int?
     let token: String = "9XkfgfwNk8QHTGEB44nd"
-    //    let lat: Float = -26.0269658
-    //    let lon: Float = 28.0137339
     
     let lat: Float = -33.918861
     let lon: Float = 18.423300
@@ -67,13 +65,7 @@ class EskomApi: ObservableObject{
                 DispatchQueue.main.async {
                     self.eventData = decodedData
                     print("Call Events")
-                    //Days are number of days and stages are the stages for that day
-                    //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
-                    
-//                    print(self.getStageTimes(loadSheddingStage: 5))
-//                    self.getStages(currentStage: self.currentStage ?? 1)
-                    
-                    
+                    //Days are number of days and stages are the stages for that day                    
                 }
             }catch let error{
                 print(error)

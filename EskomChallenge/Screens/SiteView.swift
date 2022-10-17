@@ -11,6 +11,7 @@ struct SiteView: View {
     @EnvironmentObject var vm: MapViewModel
     @StateObject var eskomApi = EskomApi()
     @State var provinceName: String = "Province"
+    @Binding var site: Sites
     var sitesApi = SitesApi()
     var body: some View {
         ScrollView {
@@ -28,37 +29,41 @@ struct SiteView: View {
     
     @ViewBuilder
     private func TopSection()-> some View{
-        HStack {
+        
             VStack(alignment: .leading) {
-                Text("Site A")
+                Text(site.name)
                     .font(.title2.bold())
-                Text("Average days online")
+                    .padding()
+                
             }
             Spacer()
-        }
+        
         
     }
     
     @ViewBuilder
     private func ChartView()-> some View{
-        ZStack{
-            RoundedRectangle(cornerRadius: 15,style: .continuous)
-                .frame(width: 380, height: 280)
-                .foregroundColor(.white)
-            Chart{
-                ForEach(vm.sites[0].week, id: \.self){ item in
-                    LineMark(x: .value("Days of the week", item.days),
-                             y: .value("Hours", item.hours))
-                }.foregroundStyle(.red)
-                    
+        VStack {
+            Text("Average days online").font(.title3)
+            ZStack{
+                RoundedRectangle(cornerRadius: 15,style: .continuous)
+                    .frame(width: 380, height: 280)
+                    .foregroundColor(.white)
+                Chart{
+                    ForEach(vm.sites[0].week, id: \.self){ item in
+                        LineMark(x: .value("Days of the week", item.days),
+                                 y: .value("Hours", item.hours))
+                    }.foregroundStyle(.red)
+                        
+                }
+    //            .chartForegroundStyleScale([
+    //                "Stage 1 - 2": .green,
+    //                "Stage 3 - 4": .yellow,
+    //                "Stage 5 - 6": .orange,
+    //                "Stage 7 - 8": .red,
+    //            ])
+                .padding()
             }
-//            .chartForegroundStyleScale([
-//                "Stage 1 - 2": .green,
-//                "Stage 3 - 4": .yellow,
-//                "Stage 5 - 6": .orange,
-//                "Stage 7 - 8": .red,
-//            ])
-            .padding()
         }
     }
     
@@ -66,7 +71,8 @@ struct SiteView: View {
     private func ScheduleView()-> some View{
         VStack {
             HStack {
-                Text("Site Schedule")
+                Text("Schedule")
+                    .font(.title2)
                 Spacer()
             }
             .padding(.bottom,20)
@@ -99,8 +105,8 @@ struct SiteView: View {
     }
 }
 
-struct SiteView_Previews: PreviewProvider {
-    static var previews: some View {
-        SiteView()
-    }
-}
+//struct SiteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SiteView(, site: <#Binding<Sites>#>)
+//    }
+//}
