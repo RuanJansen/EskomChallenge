@@ -9,7 +9,6 @@ import Foundation
 import MapKit
 import SwiftUI
 class MapViewModel: ObservableObject{
-//    let sitesApi = SitesApi()
     @Published var sites: [Sites]
     @Published var currentSite = Sites(id: 0, name: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), loadshedding: false, week: [Week(days: "Monday", hours: 2.5)])
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(
@@ -25,7 +24,6 @@ class MapViewModel: ObservableObject{
 
     
     init(){
-        //        let site = SitesApi.sites
         self.sites = SitesApi.sites
     }
     

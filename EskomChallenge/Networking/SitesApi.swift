@@ -8,9 +8,7 @@
 import Foundation
 import MapKit
 class SitesApi{
-    
-    
-    
+//have yet to recieve access to the actual data.
     static let sites: [Sites] = [
         Sites(id: 1,
               name: "Site A",
@@ -37,19 +35,6 @@ class SitesApi{
                 Week(
                 days: "Sun",
                 hours: 2.5),
-                 
               ])
-//    Sites(id: 2,
-//          name: "B",
-//          coordinate: CLLocationCoordinate2D(latitude: -33.9649, longitude: 18.4547),
-//          loadshedding: false),
-//    Sites(id: 3,
-//          name: "C",
-//          coordinate: CLLocationCoordinate2D(latitude: -33.9849, longitude: 18.4517),
-//          loadshedding: true),
-//    Sites(id: 4,
-//          name: "D",
-//          coordinate: CLLocationCoordinate2D(latitude: -28.559482, longitude: 24.937505999999985),
-//          loadshedding: true)
     ]
 }

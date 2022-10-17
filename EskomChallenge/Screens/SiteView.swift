@@ -33,7 +33,8 @@ struct SiteView: View {
             VStack(alignment: .leading) {
                 Text(site.name)
                     .font(.title2.bold())
-                Text("Average days online").font(.footnote)
+                    .padding()
+                
             }
             Spacer()
         
@@ -42,24 +43,27 @@ struct SiteView: View {
     
     @ViewBuilder
     private func ChartView()-> some View{
-        ZStack{
-            RoundedRectangle(cornerRadius: 15,style: .continuous)
-                .frame(width: 380, height: 280)
-                .foregroundColor(.white)
-            Chart{
-                ForEach(vm.sites[0].week, id: \.self){ item in
-                    LineMark(x: .value("Days of the week", item.days),
-                             y: .value("Hours", item.hours))
-                }.foregroundStyle(.red)
-                    
+        VStack {
+            Text("Average days online").font(.title3)
+            ZStack{
+                RoundedRectangle(cornerRadius: 15,style: .continuous)
+                    .frame(width: 380, height: 280)
+                    .foregroundColor(.white)
+                Chart{
+                    ForEach(vm.sites[0].week, id: \.self){ item in
+                        LineMark(x: .value("Days of the week", item.days),
+                                 y: .value("Hours", item.hours))
+                    }.foregroundStyle(.red)
+                        
+                }
+    //            .chartForegroundStyleScale([
+    //                "Stage 1 - 2": .green,
+    //                "Stage 3 - 4": .yellow,
+    //                "Stage 5 - 6": .orange,
+    //                "Stage 7 - 8": .red,
+    //            ])
+                .padding()
             }
-//            .chartForegroundStyleScale([
-//                "Stage 1 - 2": .green,
-//                "Stage 3 - 4": .yellow,
-//                "Stage 5 - 6": .orange,
-//                "Stage 7 - 8": .red,
-//            ])
-            .padding()
         }
     }
     

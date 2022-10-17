@@ -16,14 +16,12 @@ struct MapView: View {
     @EnvironmentObject var vm: MapViewModel
     
     var body: some View {
-        
             VStack(alignment: .leading) {
                 TopView()
                 MapView()
                 SelectorScrollView()
-                
             }.sheet(isPresented: $siteViewActive){
-                SiteView(site: $sites).presentationDetents([.fraction(0.5), .fraction(1)])
+                SiteView(site: $sites).presentationDetents([.fraction(0.65), .fraction(1)])
             }
     }
     
@@ -40,10 +38,7 @@ struct MapView: View {
             Text("Province")
                 .font(.title2)
                 .bold()
-            
             Spacer()
-            
-            
             Menu {
                 ForEach(vm.provinces, id: \.self){ province in
                     Button{
@@ -55,9 +50,6 @@ struct MapView: View {
             } label: {
                 Text(provinceName == "Clear" ? "Province" : provinceName)
             }
-            
-            
-            
         }
         .padding()
     }
@@ -106,38 +98,6 @@ struct MapView: View {
             .padding()
     }
     
-    //SiteButton
-    @ViewBuilder
-    func SiteButton(site: Sites)-> some View{
-        VStack {
-            HStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 15)
-                        .frame(width: 40, height: 40)
-                    Image(systemName: "lightbulb.slash.fill")
-                        .foregroundColor(.white)
-                }
-                Text(site.name)
-                    .font(.title2).fontWeight(.semibold)
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.title2)
-            }
-            Rectangle()
-                .frame(height: 0.5)
-            HStack{
-                ForEach(vm.sites) { siteTime in
-                    //?
-                }
-                Text("18:00 - 20:00")
-                Spacer()
-            }
-        }
-        .padding()
-        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 15,style: .continuous))
-        .padding(.horizontal,10)
-    }
-    
     //Scroll View
     @ViewBuilder
     func SelectorScrollView()-> some View{
@@ -147,11 +107,14 @@ struct MapView: View {
             Button{
                 vm.updateRegion(site: site)
             }label:{
-//                SiteButton(site: site)
                 VStack {
                     HStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 40, height: 40)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 40, height: 40)
+                            Image(systemName: "lightbulb.slash.fill")
+                                .foregroundColor(.white)
+                        }
                         Text(site.name)
                             .font(.title2).fontWeight(.semibold)
                         Spacer()
@@ -162,12 +125,9 @@ struct MapView: View {
                         .frame(height: 0.5)
                     HStack{
                         Spacer()
-                        Image(systemName: "lightbulb.slash.fill")
-                        
                         VStack {
                             Text(eskomApi.getStageTimes().first ?? "")
                         }
-                        
                     }
                 }
                 .padding()

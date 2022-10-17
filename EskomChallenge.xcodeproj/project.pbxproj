@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		437E50AA28F83F1B0037B9BA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437E50A928F83F1B0037B9BA /* Tab.swift */; };
-		4382456228F73BC00094A2FD /* SiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382456128F73BC00094A2FD /* SiteButton.swift */; };
 		F328B62F28F55C2400835F36 /* EskomChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */; };
 		F328B63128F55C2400835F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B63028F55C2400835F36 /* ContentView.swift */; };
 		F328B63328F55C2600835F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F328B63228F55C2600835F36 /* Assets.xcassets */; };
@@ -20,11 +18,9 @@
 		F328B66028F55DD300835F36 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B65F28F55DD300835F36 /* DashboardView.swift */; };
 		F328B66228F55DE200835F36 /* SiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66128F55DE200835F36 /* SiteView.swift */; };
 		F328B66428F55DF300835F36 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66328F55DF300835F36 /* Events.swift */; };
-		F328B66628F55DFF00835F36 /* OldMutual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66528F55DFF00835F36 /* OldMutual.swift */; };
+		F328B66628F55DFF00835F36 /* Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66528F55DFF00835F36 /* Sites.swift */; };
 		F328B66928F55F7300835F36 /* SitesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66828F55F7300835F36 /* SitesApi.swift */; };
 		F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66A28F55F7F00835F36 /* EskomApi.swift */; };
-		F328B66D28F5613100835F36 /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B66C28F5613100835F36 /* MapComponent.swift */; };
-		F380BF8428F6F6AD000C2312 /* TempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380BF8328F6F6AD000C2312 /* TempFile.swift */; };
 		F380BF8628F702AF000C2312 /* Areas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380BF8528F702AF000C2312 /* Areas.swift */; };
 		F3AE7CFC28F81D130078B521 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE7CFB28F81D130078B521 /* Status.swift */; };
 		F3AE7CFE28F81D730078B521 /* AreasSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE7CFD28F81D730078B521 /* AreasSearch.swift */; };
@@ -49,8 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		437E50A928F83F1B0037B9BA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		4382456128F73BC00094A2FD /* SiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteButton.swift; sourceTree = "<group>"; };
 		F328B62B28F55C2400835F36 /* EskomChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EskomChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomChallengeApp.swift; sourceTree = "<group>"; };
 		F328B63028F55C2400835F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,11 +59,9 @@
 		F328B65F28F55DD300835F36 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		F328B66128F55DE200835F36 /* SiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteView.swift; sourceTree = "<group>"; };
 		F328B66328F55DF300835F36 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
-		F328B66528F55DFF00835F36 /* OldMutual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldMutual.swift; sourceTree = "<group>"; };
+		F328B66528F55DFF00835F36 /* Sites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sites.swift; sourceTree = "<group>"; };
 		F328B66828F55F7300835F36 /* SitesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitesApi.swift; sourceTree = "<group>"; };
 		F328B66A28F55F7F00835F36 /* EskomApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EskomApi.swift; sourceTree = "<group>"; };
-		F328B66C28F5613100835F36 /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
-		F380BF8328F6F6AD000C2312 /* TempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFile.swift; sourceTree = "<group>"; };
 		F380BF8528F702AF000C2312 /* Areas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Areas.swift; sourceTree = "<group>"; };
 		F3AE7CFB28F81D130078B521 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		F3AE7CFD28F81D730078B521 /* AreasSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreasSearch.swift; sourceTree = "<group>"; };
@@ -128,7 +120,6 @@
 				F328B66728F55F6200835F36 /* Networking */,
 				F328B65B28F55D8200835F36 /* Models */,
 				F328B65928F55D6E00835F36 /* Screens */,
-				F328B65828F55D5A00835F36 /* Components */,
 				F328B62E28F55C2400835F36 /* EskomChallengeApp.swift */,
 				F328B63028F55C2400835F36 /* ContentView.swift */,
 				F328B63228F55C2600835F36 /* Assets.xcassets */,
@@ -162,15 +153,6 @@
 			path = EskomChallengeUITests;
 			sourceTree = "<group>";
 		};
-		F328B65828F55D5A00835F36 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				4382456128F73BC00094A2FD /* SiteButton.swift */,
-				F328B66C28F5613100835F36 /* MapComponent.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		F328B65928F55D6E00835F36 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,12 +166,11 @@
 		F328B65B28F55D8200835F36 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F328B66528F55DFF00835F36 /* OldMutual.swift */,
+				F328B66528F55DFF00835F36 /* Sites.swift */,
 				F328B66328F55DF300835F36 /* Events.swift */,
 				F380BF8528F702AF000C2312 /* Areas.swift */,
 				F3AE7CFB28F81D130078B521 /* Status.swift */,
 				F3AE7CFD28F81D730078B521 /* AreasSearch.swift */,
-				437E50A928F83F1B0037B9BA /* Tab.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,7 +187,6 @@
 		F380BF8228F6F69D000C2312 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F380BF8328F6F6AD000C2312 /* TempFile.swift */,
 				F3D7E38C28F802F500F304F5 /* MapViewModel.swift */,
 			);
 			path = ViewModels;
@@ -343,22 +323,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F328B63128F55C2400835F36 /* ContentView.swift in Sources */,
-				437E50AA28F83F1B0037B9BA /* Tab.swift in Sources */,
 				F328B66428F55DF300835F36 /* Events.swift in Sources */,
-				F380BF8428F6F6AD000C2312 /* TempFile.swift in Sources */,
 				F328B66028F55DD300835F36 /* DashboardView.swift in Sources */,
 				F328B66928F55F7300835F36 /* SitesApi.swift in Sources */,
 				F328B66228F55DE200835F36 /* SiteView.swift in Sources */,
 				F380BF8628F702AF000C2312 /* Areas.swift in Sources */,
 				F328B65E28F55DC500835F36 /* MapView.swift in Sources */,
-				4382456228F73BC00094A2FD /* SiteButton.swift in Sources */,
-				F328B66D28F5613100835F36 /* MapComponent.swift in Sources */,
 				F328B62F28F55C2400835F36 /* EskomChallengeApp.swift in Sources */,
 				F3AE7CFC28F81D130078B521 /* Status.swift in Sources */,
 				F3D7E38D28F802F500F304F5 /* MapViewModel.swift in Sources */,
 				F328B66B28F55F7F00835F36 /* EskomApi.swift in Sources */,
 				F3AE7CFE28F81D730078B521 /* AreasSearch.swift in Sources */,
-				F328B66628F55DFF00835F36 /* OldMutual.swift in Sources */,
+				F328B66628F55DFF00835F36 /* Sites.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
