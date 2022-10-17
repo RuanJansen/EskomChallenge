@@ -11,9 +11,6 @@ class EskomApi: ObservableObject{
     var areaData: Areas?
     @Published var eventData: Events?
     let token: String = "YVKYuUQ2ZjDFXGxztCeA"
-//    let lat: Float = -26.0269658
-//    let lon: Float = 28.0137339
-    
     let lat: Float = -33.918861
     let lon: Float = 18.423300
 
@@ -67,11 +64,7 @@ class EskomApi: ObservableObject{
                     self.eventData = decodedData
                     print("Call Events")
                     //Days are number of days and stages are the stages for that day
-                    //print("\(self.eventData?.schedule.days[1].stages[0] ?? "")")
-//                    self.getStages()
-//                    print(self.getLevels().count)
                     print(self.getStageTimes(loadSheddingStage: 5))
-//                    print(self.getStageTimes())
                     self.getDays()
                     
                 }
@@ -97,12 +90,7 @@ class EskomApi: ObservableObject{
         //we have the stage number
         // Display all the stage times for the stage
         let stageTimes = eventData?.schedule.days.first?.stages[loadSheddingStage]
-        
         return stageTimes ?? [String]()
-//        for times in stageTimes ?? [String]() {
-//            return times
-//        }
-        
     }
     
     func getStageTimes() -> [String]{
@@ -113,20 +101,12 @@ class EskomApi: ObservableObject{
         //we have the stage number
         // Display all the stage times for the stage
         let stageTimes = eventData?.schedule.days.first?.stages[stageNumber]
-        
         return stageTimes ?? [String]()
-//        for times in stageTimes ?? [String]() {
-//            return times
-//        }
-        
     }
     
     //Get the days of the week for loadshedding 
     func getDays() -> [Day]{
         let days = eventData?.schedule.days ?? [Day]()
-//        let daysRe = days.map { Day in
-//            Day.name
-//        }
         for day in days {
             print(day.name.prefix(3))
         }

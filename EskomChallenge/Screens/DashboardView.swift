@@ -14,20 +14,20 @@ struct DashboardView: View {
     @State var sites: Sites
     @EnvironmentObject var vm: MapViewModel
     @StateObject var eskomApi = EskomApi()
-    
+    @State var provinceName: String = "Province"
     @State var progressValue: Float = 0.0
     var body: some View {
         ScrollView{
             VStack{
                 locationChoice()
                     .padding()
-             activeLocationRing()
-            // locationChoice()
-               
+                activeLocationRing()
+                // locationChoice()
                 
-             loadsheddingSchedule()
-                .padding()
-            mapComponent()
+                
+                loadsheddingSchedule()
+                    .padding()
+                mapComponent()
             }
         }
     }
@@ -35,36 +35,53 @@ struct DashboardView: View {
     //MARK: MapComponent area
     @ViewBuilder
     func  mapComponent()->some View{
-
+        
         VStack(alignment:.leading){
             Text("All Locations")
                 .padding(.leading)
                 .font(.title3)
-                
-            
-            
-            
             Map(
                 coordinateRegion: $vm.mapRegion,
                 annotationItems: vm.sites,
                 annotationContent: { item in
                     MapAnnotation(coordinate: item.coordinate){
-                        Button("Button to change", action: {
-                            vm.currentSite = item
-                            siteViewActive = true
-                        })
+                        
+                        VStack{
+                            Image(systemName: "map.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .background(.red)
+                                .cornerRadius(36)
+                            Image(systemName: "triangle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(.red)
+                                .rotationEffect(Angle(degrees: 180))
+                                .offset(y: -10)
+                                .padding(.bottom, 30)
+                            
+                        }
                     }
                 })
-                .padding()
-                .frame(height: 200)
-                .foregroundColor(.gray)
+            .padding()
+            //            .frame(height: 200)
+            .foregroundColor(.gray)
+            .ignoresSafeArea()
+            .frame(height: UIScreen.main.bounds.height/4.5, alignment: .top)
+            .cornerRadius(30)
+            
         }
     }
     
     //MARK: Active Location Ring
     @ViewBuilder
     private func activeLocationRing() -> some View{
-       
+        
         
         ZStack{
             
@@ -72,15 +89,15 @@ struct DashboardView: View {
                 .frame(width: 370, height: 150)
                 .cornerRadius(25)
                 .foregroundColor(.white)
-                
-                
-
+            
+            
+            
             HStack{
                 ZStack{
-                        Text("8/10 \n Locations")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.gray)
-                            .font(.system(size: 11))
+                    Text("8/10 \n Locations")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 11))
                     
                     Circle()
                         .stroke(lineWidth: 10)
@@ -93,19 +110,20 @@ struct DashboardView: View {
                         .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
                         .frame(width:80, height:80)
                         .foregroundColor(Color.red)
-                        
+                        .rotationEffect(Angle(degrees: 270))
+                    
                 }
                 .padding(.trailing)
                 VStack(alignment: .leading){
                     HStack{
-                    Image(systemName: "exclamationmark.circle.fill")
-                           .foregroundColor(.red)
-                            
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundColor(.red)
+                        
                         Text("Offline Locations")
                             .font(.title2)
                             .foregroundColor(.black)
                             .bold()
-                       
+                        
                     }
                     Text("Current Stage")
                         .font(.subheadline)
@@ -113,12 +131,12 @@ struct DashboardView: View {
                 }
                 
             }
-                
-            }
             
-           
         }
-
+        
+        
+    }
+    
     struct progressBar: View{
         
         
@@ -138,82 +156,82 @@ struct DashboardView: View {
             }
         }
     }
-
+    
     //MARK: location section
     @ViewBuilder
     private func locationChoice()-> some View{
-      
+        
         HStack{
-                Text("Province")
+            Text("Province")
                 .font(.title2)
                 .bold()
             
-                Spacer()
+            Spacer()
             
-            Menu("Region"){
-                
-                Button("Gauteng"){}
-                Button("North West"){}
-                Button("Western Cape"){}
-                Button("Eastern Cape"){}
-                Button("Nothern Cape"){}
-                Button("Free State"){}
-                Button("Limpopo"){}
-                Button("KwaZulu Natal"){}
-           
+            
+            Menu {
+                ForEach(vm.provinces, id: \.self){ province in
+                    Button{
+                        provinceName = province
+                    } label: {
+                        Text(province)
+                    }
+                }
+            } label: {
+                Text(provinceName == "Clear" ? "Province" : provinceName)
             }
-                
-                
-          
+            
+            
+            
         }
         
-     
+        
     }
-
+    
     //MARK: loadshedding schedule
     @ViewBuilder
     private func loadsheddingSchedule()-> some View{
         VStack(alignment: .leading){
             HStack{
-            Text("LoadShedding Schedule")
-                .font(.title3)
-                .multilineTextAlignment(.leading)
-               Spacer()
-            Menu("Day"){
-                
-                Button("Monday"){}
-                Button("Tuesday"){}
-                Button("Wednesday"){}
-                Button("Thursday"){}
-                Button("Friday"){}
-                Button("Saturday"){}
-                Button("Sunday"){}
-                
-           
+                Text("LoadShedding Schedule")
+                    .font(.title3)
+                    .multilineTextAlignment(.leading)
+                Spacer()
+                Menu("Day"){
+                    
+                    Button("Monday"){}
+                    Button("Tuesday"){}
+                    Button("Wednesday"){}
+                    Button("Thursday"){}
+                    Button("Friday"){}
+                    Button("Saturday"){}
+                    Button("Sunday"){}
+                    
+                    
+                }
             }
-        }
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 20){
-                   
-                        ForEach(1..<9){
+                    
+                    ForEach(1..<9){
                         
-                            Text("Stage \($0)")
-                                .foregroundColor(.black)
-                                .font(.title2)
-                                .frame(width: 180, height: 180)
-                                .cornerRadius(25)
-                                .background(.gray)
-                            
-                            
-                
+                        Text("Stage \($0)")
+                            .foregroundColor(.black)
+                            .font(.title2)
+                            .frame(width: 180, height: 180)
+                            .cornerRadius(25)
+                            .background(.gray)
+                        
+                        
+                        
                     }
-                   
+                    
                     .cornerRadius(25)
                 }
             }
         }
     }
- 
+    
 }
 
 
@@ -226,4 +244,4 @@ struct DashboardView_Previews: PreviewProvider {
             .environmentObject(MapViewModel())
     }
 }
-        
+

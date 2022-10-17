@@ -75,7 +75,9 @@ struct SiteView: View {
             VStack {
                 if days.name == dayText{
                     ForEach(days.stages, id: \.self) { i in
-                        Text(i.first ?? "")
+                        HStack{
+                            Text(i.first ?? "")
+                        }
                     }
                 }
             }
