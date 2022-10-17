@@ -16,15 +16,24 @@ struct DashboardView: View {
     @StateObject var eskomApi = EskomApi()
     @State var provinceName: String = "Province"
     @State var progressValue: Float = 0.0
+    @State var dayOfWeek: String = "weekday"
+    
+//
+//    //collapsableView
+//    @State var label: () -> Text
+//    @State var content: () -> ContentView
+//    @State private var collapsed: Bool = true
+    
+    
     var body: some View {
-        ScrollView{
+        ScrollView(showsIndicators: false){
             VStack{
                 locationChoice()
                     .padding()
                 activeLocationRing()
                 // locationChoice()
                 
-                
+                Divider()
                 loadsheddingSchedule()
                     .padding()
                 mapComponent()
@@ -197,7 +206,31 @@ struct DashboardView: View {
                     .font(.title3)
                     .multilineTextAlignment(.leading)
                 Spacer()
+                
+                //                                Menu{
+                //                                    ForEach(eskomApi.getDays(), id: \.self){
+                //                                        dayOfWeek in
+                //                                        Button{
+                //                                           dayOfWeek = eskomApi.getDays()
+                //                                        }label:{
+                //                                            Text(eskomApi.getDays())
+                //                                        }
+                //
+                //                                    }
+                //                                }
                 Menu("Day"){
+                    
+                    Button("Monday"){}
+                    Button("Tuesday"){}
+                    Button("Wednesday"){}
+                    Button("Thursday"){}
+                    Button("Friday"){}
+                    Button("Saturday"){}
+                    Button("Sunday"){}
+                    
+                    
+                }
+                Menu("Site"){
                     
                     Button("Monday"){}
                     Button("Tuesday"){}
@@ -212,26 +245,61 @@ struct DashboardView: View {
             }
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 20){
+                    // we want to get the times for different stages.
                     
-                    ForEach(1..<9){
-                        
-                        Text("Stage \($0)")
-                            .foregroundColor(.black)
-                            .font(.title2)
-                            .frame(width: 180, height: 180)
-                            .cornerRadius(25)
-                            .background(.gray)
-                        
-                        
-                        
+                    ForEach(1..<8){ stageValue in
+                        VStack{
+                            Text("Stage\(stageValue)")
+                                .foregroundColor(.black)
+                                .font(.title2)
+                            
+                            ForEach(eskomApi.getStageTimes(loadSheddingStage: stageValue), id: \.self){ stage in
+                                Text("\(stage)")
+                                    .foregroundColor(.black)
+                                    .font(.subheadline)
+                                
+                            }
+                        }
                     }
-                    
+                    .frame(width: 180, height: 180)
                     .cornerRadius(25)
+                    .background(.gray)
+                    
+                    
                 }
+                
+                .cornerRadius(25)
             }
         }
+        
+        
+        //        //MARK: collapsing view
+        //        @ViewBuilder
+        //        func collapsible() -> some View{
+        //            VStack{
+        //                Button(action: {self.collapsed.toggle()},
+        //                       label: {
+        //                    HStack{
+        //                        self.label()
+        //                        Spacer()
+        //                        Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+        //                    }
+        //                    .padding(.bottom, 1)
+        //
+        //                })
+        //                .buttonStyle(PlainButtonStyle())
+        //                VStack{
+        //                    self.content
+        //                }
+        //                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
+        //                .clipped()
+        //                .animation(.easeOut)
+        //                .transition(.slide)
+        //            }
+        //        }
+        //    }
+        
     }
-    
 }
 
 
